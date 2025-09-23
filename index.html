@@ -1043,8 +1043,8 @@ get conflicting Python packages since packages have varying dependencies
 and you might have installed several versions of the same package. It
 can even <a href="https://askubuntu.com/questions/95037/what-is-the-best-way-to-install-python-packages">break
 your system Python interpreter</a>.</p>
-<p>Therefor, we strongly recommend to use a Python package manager that
-uses of virtual environments. This way, you can create a separate
+<p>Therefore, we strongly recommend to use a Python package manager that
+uses virtual environments. This way, you can create a separate
 environment on your machine for each project. In these environments, any
 dependency of the project, such as python packages, other software or C
 libraries can be installed. We will use them here for installing Python
@@ -1084,7 +1084,7 @@ yourself, or install packages after creating the environment.</p>
 <p><em>Mamba</em> creates isolated conda environments with sets of
 packages, that do not interfere with your base Python or with other
 conda environments. To create an environment:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>mamba create <span class="op">--</span>name geotest python numpy folium</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">--name</span> geotest python numpy folium</span></code></pre></div>
 <p>This creates a new environment called <em>geotest</em> with
 <em>Python</em> and <em>NumPy</em> installed into the conda environment.
 Another option is to create an environment from a file. The advantage of
@@ -1107,15 +1107,15 @@ text editor such as <code>gedit</code> or RStudio, pasting the lines
 above into a new file, and saving it to a new file named
 <code>env.yaml</code>, or however you want to call it and use the
 argument <code>--file</code> (or <code>--f</code> in short):</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>mamba env create <span class="op">-</span>f env.yaml</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">mamba</span> env create <span class="at">-f</span> env.yaml</span></code></pre></div>
 <p>Let’s list the currently available environments:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>mamba info <span class="op">--</span>envs</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">mamba</span> info <span class="at">--envs</span></span></code></pre></div>
 <p><em>Mamba</em> puts an asterisk (*) in front of the active
 environment. Now we activate the environment. While <em>Mamba</em>
 replaces <em>Conda</em> for most commands, it does not replace
 <em>Conda</em> entirely. For example, this is not the case for
 (de)activating environments:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>source activate geotest</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="bu">source</span> activate geotest</span></code></pre></div>
 <p>After this, the current environment is shown in parentheses in front
 of your prompt (<code>(geotest)$</code>). Note that the activated
 environment is only valid for the shell in which you activated it. For
@@ -1148,16 +1148,16 @@ changes to <em>Conda</em>). Hence install packages with
 <p>The <code>mamba search</code> command searches a set of channels. By
 default, packages are automatically downloaded and updated from the
 default channel. To search for a package, type:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>mamba search pandas</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">mamba</span> search pandas</span></code></pre></div>
 <p>This gives a list of all packages that have “pandas” in the name and
 lists all available versions. To install:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>mamba install pandas</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">mamba</span> install pandas</span></code></pre></div>
 <p>This installs the latest compatible version of <em>Pandas</em>. Note
 that this would install it into your currently activated
 environment.</p>
 <p>Note that you can also install multiple packages at the same
 time:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>mamba install geopandas matplotlib</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">mamba</span> install geopandas matplotlib</span></code></pre></div>
 <p><em>Mamba</em> is also able to install some non-Python packages that
 have Python bindings. For example with mamba we can install
 <em>jupyter</em>, a web based editor for writing and evaluating code per
@@ -1173,24 +1173,24 @@ context are:</p>
 to check which Python or GDAL version is used in the environment;</li>
 </ul>
 <p>Removing packages is just as simple:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>mamba remove geopandas pandas folium</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">mamba</span> remove geopandas pandas folium</span></code></pre></div>
 <p>Now, we deactivate the environment and return to base
 environment.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>source deactivate</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">conda</span> deactivate</span></code></pre></div>
 </div>
 <div id="running-a-python-script-in-the-terminal" class="section level2">
 <h2>Running a Python script in the terminal</h2>
 <p>Within a conda environment, Python can be started directly, or can be
 called to run a script file. To start Python directly:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>python</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">python</span></span></code></pre></div>
 <p>Now, you can type Python expressions that will be executed one by
 one:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;Good morning, you are running Python version: </span><span class="sc">{</span>sys<span class="sc">.</span>version<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
 <p>To go back, type:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>exit()</span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">exit()</span></span>
 <span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="co"># or </span></span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>quit()</span></code></pre></div>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="fu">quit()</span></span></code></pre></div>
 <p>Usually, we do not want to run expressions one by one, but build
 scripts instead, to ensure transferability and reproducibilty. Create a
 new text file and (re)name it (to) <code>test.py</code>. Open it, for
@@ -1198,7 +1198,7 @@ example with a text editor, paste in the code you used above
 (<code>import sys</code> etc.), and save the script. Navigate in the
 terminal to the location where this script is stored, using
 <code>cd</code>. Finally, run the script with:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>python test.py</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="ex">python</span> test.py</span></code></pre></div>
 <p>The output is printed to the terminal. Running a script from the
 terminal is less error-prone than running it from an IDE (see the next
 section), such as Spyder or Visual Studio Code, as IDEs often keep
@@ -1380,12 +1380,12 @@ up.</p>
 <p>First we need to set up our environment. Activate the
 <em>geotest</em> environment if you created it before or create it using
 the yaml.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="co"># One of the following</span></span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>mamba env create <span class="op">-</span>f environment.yaml</span>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="co"># One of the following</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="ex">mamba</span> env create <span class="at">-f</span> environment.yaml</span>
 <span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a></span>
 <span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a><span class="co"># or </span></span>
 <span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a></span>
-<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a>source activate geotest </span></code></pre></div>
+<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a><span class="bu">source</span> activate geotest </span></code></pre></div>
 <p>If <code>(geotest)</code> is visible before the active line in the
 terminal the environment is successfully activated. However, this is
 something different than associating it to the project, if you run a
@@ -1659,7 +1659,7 @@ Google Colab). First we will show how to run Jupyter Notebook locally.
 To do this install <code>jupyter</code> and the module
 <code>folium</code> in an existing or new environment that includes
 Python. To start Jupyter type in the terminal:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>jupyter notebook</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="ex">jupyter</span> notebook</span></code></pre></div>
 <p>Jupyter should pop up in your browser. Note that although jupyter is
 opened in your browser, internet is not used, the code is interpreted
 and run locally. You will see a menu with all files in your working
@@ -1766,7 +1766,7 @@ this in a ubuntu terminal, or a terminal in VSCode. To open the terminal
 in VSCode press <code>Ctrl</code> + <code>shift</code> + <code>P</code>
 and type terminal and select <em>Create New Terminal (With
 Profile)</em></p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>mamba env create <span class="op">--</span><span class="bu">file</span> refresher.yaml</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="ex">mamba</span> env create <span class="at">--file</span> refresher.yaml</span></code></pre></div>
 <p>Once everything is installed, associate the refresher environment to
 this project. The easiest way is press <code>Ctrl</code> +
 <code>shift</code> + <code>P</code> and type <em>Python: select
