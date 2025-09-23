@@ -233,7 +233,7 @@ Create the following files:
       └── __init__.py
 ```
 
-<img src="images/VSCode/empty-VSCode.png" alt="VSCode when you open it for the first time" width="100%"></img>
+<img src="images/vscode/empty-vscode.png" alt="VSCode when you open it for the first time" width="100%"></img>
 
 Create an empty directory `MyPackage` and open it using the button that shows in the main screen when you open VSCode. Create the files as the file tree shows above. Open `main.py`, and write the following code:
 
@@ -273,13 +273,13 @@ dependencies:
   - folium
 ```
 
-<img src="images/VSCode/main.py.png" alt="The main.py script" width="100%"></img>
+<img src="images/vscode/main.py.png" alt="The main.py script" width="100%"></img>
 
 ### Extensions 
 
 You can run the code by pressing the play button in the top right. When you do this, a terminal pops up, showing the output of the file. As explained before, in VSCode we run code per file instead of per line as we are used to in R. As you can see, already out of the box there is some python functionality that is built into VSCode, but there is more. Open the extensions page, type python and install the extensions *Python*,  *Python Debugger* and *jupyter*. These are the extensions that we will use throughout the course, more is not necessary for now, but there is a whole world out there. 
 
-<img src="images/VSCode/extentions.png" alt="Python extensions in VSCode" width="100%"></img>
+<img src="images/vscode/extentions.png" alt="Python extensions in VSCode" width="100%"></img>
 
 To show you some of this functionality, write the following code in the `MyPackage.__init__.py`: 
 
@@ -329,7 +329,7 @@ You start the debugger by instead of clicking on the run arrow, click on the sma
   * Restart (`ctrl` + `shift` + `F5`): Re run the script 
   * Stop (`shift` + `f5`): Stop the debugger 
 
-<img src="images/VSCode/debugger.png" alt="The debugger in VSCode" width="100%"></img>
+<img src="images/vscode/debugger.png" alt="The debugger in VSCode" width="100%"></img>
 
 If you step into the function we can find out the real value of the debugger. On the top left panel we can see the local variables, the variables that are known within the function, and the global variables. These are the variables for this module. In the bottom left we can switch to different modules, when clicking on `<module>   main.py` we can inspect the variables known in the script `main.py`. It is directly clear how python handles variables, what is known within a function and what is not. Switch to the `some_function` scope and you can see there is 1 local variable `a_number` which is the input the the function, 5 in this example. When you will start making use of more advanced objects with properties and methods this variable overview will become more elaborate.
 
