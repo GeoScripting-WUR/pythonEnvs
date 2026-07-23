@@ -3,4 +3,6 @@
 .RData
 .Ruserdata
 *.Rproj
-.vscode/
+.vscode/# pixi environments
+.pixi/*
+!.pixi/config.toml

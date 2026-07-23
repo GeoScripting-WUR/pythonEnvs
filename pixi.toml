@@ -1,0 +1,13 @@
+[workspace]
+authors = ["Arno Timmer <arno.timmer@wur.nl>"]
+channels = ["conda-forge"]
+name = "geotest"
+platforms = ["win-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = "*"
+numpy = "*"
+folium = "*"
