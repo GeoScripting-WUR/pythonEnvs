@@ -212,19 +212,19 @@ Positron is a complete IDE that is used by many developers, Python developers bu
 
 To get started in Positron we will set up a basic project structure and run some very basic code. There is a difference between opening a **file** and opening a **project** in Positron. Opening a file will let you edit that file and possibly run it (with the default interpreter). Opening a directory or a project consisting of multiple (sub)directories will let you set a default interpreter, search and replace throughout the project and navigate to function imports and many more advantages. We recommend you to generally use a seperate project for each tutorial, exercise and assignment. In that way you can use dedicated environments and keep a coherent folder structure throughout the course. 
 
-Create an empty folder `MyPackage` and open it using the button that shows in the main screen when you open Positron. 
-Create the following file: 
+Go back to the Documents directory and create a new pixi project `MyPackage`, by running:
 
-```
-Create the following files:
-
-  MyPackage/
-  ├── main.py
-  └── my_package
-      └── __init__.py
+```{Python, engine.path='/usr/bin/python3', eval=TRUE}
+pixi init MyPackage
 ```
 
- Open `main.py`, and write the following code:
+This line creates a new folder called MyPackage. Open it via Positron (or use 'cd MyPackage' in bash). When you are in the directory Documents/MyPacakge run
+
+```{Python, engine.path='/usr/bin/python3', eval=TRUE}
+pixi add python
+```
+
+Then, create a file `main.py`. Open `main.py`, and write the following code:
 
 ```{Python, engine.path='/usr/bin/python3', eval=TRUE}
 print('hello world')
@@ -232,8 +232,7 @@ print('hello world')
 
 You can run the full code by pressing the play button on the top left. Select Run Python File in Terminal to see the output in the Terminal window.
 
- When you do this, a terminal pops up, showing the output of the file. In Positron we run code per file. 
- But you can also run the single line as we are used to in R, by using CTRL+ENTER, and see the output in the Console window.
+When you do this, a terminal pops up, showing the output of the file. In Positron we run code per file. In python, running code per file is the the normal way to go. However, you can also run the single lines as we are used to in R by using CTRL+ENTER, and see the output line by line in the Console window.
 
 
 Positron directly recognizes the python file extension (.py) and does some suggestions. In the top right you can what type of file Positron thinks you are working in, it also shows a number, most likely 3.14.x if you are following this course in 2026. This number is the python version of the interpreter that is now running, more on this later. In the left there is a column with some buttons. These buttons are, from top to bottom, for:
@@ -250,7 +249,7 @@ Positron directly recognizes the python file extension (.py) and does some sugge
 
 It is recommended to turn off automatic features that copilot offers. You can do this by
 1.  going  to File → Preferences → Settings (or press Ctrl+,). 
-2. In the search bar, type "Copilot".
+2. In the search bar, type "GitHub Copilot".
 3. Find the settings for:
     GitHub Copilot: Enable (controls code completions)
 
@@ -532,14 +531,14 @@ Create a directory structure for this tutorial using the terminal:
 
 ```{r, eval=FALSE,engine='bash'}
 cd ~/Documents/
-mkdir PythonRefresher #or give the directory a name to your liking
+pixi init PythonRefresher #or give the directory a name to your liking
 cd ./PythonRefresher
 mkdir output
 ```
 
 And open it with Positron by clicking _File_ and _Open Folder_. 
 
-We only made a directory for output, because no input data or separate scripts are created in this tutorial. Next, we will create a pixi environment. First initiate the environemnt, name it `refresher`, and add the following packages to the environment:
+We only made a directory for output, because no input data or separate scripts are created in this tutorial. Next, we will add the following packages to the pixi environment:
 
 ```
   - python
@@ -549,11 +548,13 @@ We only made a directory for output, because no input data or separate scripts a
   - spyder
 ```
 
-Once everything is installed, associate the refresher environment to this project. The easiest way is press `Ctrl` + `shift` + `P` and type _Python: select interpreter_. 
+```{r, eval=FALSE,engine='bash'}
+pixi add python numpy matplotlib geopandas spyder
+```
+
+Once everything is installed, associate the pixi environment to this project. The easiest way is press `Ctrl` + `shift` + `P` and type _Python: select interpreter_. 
 
 Create a new Python script and save it. 
-
-Important to note: for compatibility, it is best to install packages from the same channel as much as possible. Given that packages in the file `refresher.toml` are installed from the `conda-forge` channel, it is wise to use this same channel when you want to install additional packages in your environment. 
 
 
 ## Quick refresher
