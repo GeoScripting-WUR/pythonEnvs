@@ -277,7 +277,7 @@ Now, in the `main.py` file, run the function.:
 some_function(5)
 ```
 
-A yellow squiggly line showed up. This means something is wrong with the code. And this is right, if we would run the code python would complain that the function is not known. We forgot to import it, we defined it but did not import it yet. If you stand with your cursor in the function call, and pres `ctrl` + `.`, Positron will try to figure out how to solve the issue. In this case it proposes to import it from `MyPackage.my_package`. If you press enter it imports the function. You can now run the function. 
+A red squiggly line showed up. This means something is wrong with the code. And this is right, if we would run the code python would complain that the function is not known. We forgot to import it, we defined it but did not import it yet. If you stand with your cursor in the function call, and pres `ctrl` + `.`, Positron will try to figure out how to solve the issue. In this case it proposes to import it from `MyPackage.my_package`. If you press enter it imports the function. You can now run the function. 
 
 If you press `ctrl` and click on the function in `main.py` you will open the function definition. This is very useful when navigating through a large project.
  
