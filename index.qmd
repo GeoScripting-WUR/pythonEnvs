@@ -191,21 +191,18 @@ Pixi will then create a `pixi.toml` from that, and the environment belonging to 
 # Python editors and IDEs
 There are many Integrated Development Environments (IDEs) for Python, and every programmer has their own preference. An IDE is a software application that provides facilities for software development. There are roughly two ways in which python developers are working with python.
 
-1. Writing scripts and mainly working with out of the box functionality from packages in notebooks. In this way you might explore some data or do remote analysis that requires a lot of computing resources. Jupyter Notebooks and Jupyter Labs is developed for this purpose. 
-    * [Jupyter notebook](http://jupyter.org/) integrates visualization with code and is suitable for making tutorials, dashboards, data exploration, do prototype  testing or run largely predefined functionality. It is not suited to do develop large projects in. Jupyter Notebook runs in a browser on a localhost server or on a web server, for example remotely on a cluster or on [Google cloud](https://colab.research.google.com/). In Jupyter you mix text (documentation or explanation) with code and images (plots for example). Jupyter is cell-based, meaning that code is run per cell. The variables and objects are stored in memory across cells. Since Jupyter saves the state, including the output of a cell, it does not work very well with git. Additional tools are needed for colaborating and making sure that the output from one used does not interfere with another user's output, even if it is the same output. 
-  
-2. Writing python code for larger projects, requiring functions, multiple modules and multiple files. For larger projects, some additional tooling is very helpful. IDE's come with tooling to support git, debugging, autocompletion and GenAI. In these IDE's, in contrast to Rstudio, code is run per file instead of line by line or cell by cell as in notebooks. A file might import other files and so on. This might need some getting used to but the debugger is there to help you and inspect how the interpreter is reading your code. Two IDE's that are good to know: 
+1. Writing python code for larger projects, requiring functions, multiple modules and multiple files. For larger projects, some additional tooling is very helpful. IDE's come with tooling to support git, debugging, autocompletion and GenAI. In these IDE's, in contrast to Rstudio, code is run per file instead of line by line or cell by cell as in notebooks. A file might import other files and so on. This might need some getting used to but the debugger is there to help you and inspect how the interpreter is reading your code. Two IDE's that are good to know: 
 
-    * [Positron](https://github.com/posit-dev/positron): A next-generation data science IDE built by Posit PBC (the people behind RStudio). It's a VScode clone, but made specifically to work for python and R with a better git integration, AI integration and the possibility of using plugins, while keeping the Rstudio features (line by line running, variable viewer... and more).
+    * [Positron](https://github.com/posit-dev/positron): A next-generation data science IDE built by Posit PBC (the people behind RStudio). It's a VScode clone, but made specifically to work for python and R with a better git integration, AI integration and the possibility of using plugins, while keeping the Rstudio features (line by line running, variable viewer... and more). *In this course, Positron is the recommended Python IDE, it is pre-installed. in the Linux VM, and we will go into detail in the next section of this tutorial.*
 
-    * [Visual Studio Code](https://code.visualstudio.com/): Visual Studio Code (VSCode) is a very complete IDE. It can be used to develop software in almost all languages and it has a lost of advanced functionality. VSCode is developed by Microsoft, but it is built upon an open source distribution and numerous packages exist that are open source, for example Python functionality. *In this course, VSCode is the recommended Python IDE, it is pre-installed. in the Linux VM.*
+    * [Visual Studio Code](https://code.visualstudio.com/): Visual Studio Code (VSCode) is a very complete IDE. It can be used to develop software in almost all languages and it has a lost of advanced functionality. VSCode is developed by Microsoft, but it is built upon an open source distribution and numerous packages exist that are open source, for example Python functionality. 
 
     * [PyCharm Community Edition](https://www.jetbrains.com/help/pycharm/install-and-set-up-pycharm.html) is a free professional Python IDE with a lot of advanced functionality, such as integrated GIT version control, code completion, code checking, debugging and navigation. This IDE can optionally be used as an alternative to Positron. If you have experience, you can use Pycharm instead of Positron, but do know that you will not be assisted for solving IDE-related issues.
 
-
+2. Writing scripts and mainly working with out of the box functionality from packages in notebooks. In this way you might explore some data or do remote analysis that requires a lot of computing resources. Jupyter Notebooks and Jupyter Labs is developed for this purpose. 
+    * [Jupyter notebook](http://jupyter.org/) integrates visualization with code and is suitable for making tutorials, dashboards, data exploration, do prototype  testing or run largely predefined functionality. It is not suited to do develop large projects in. Jupyter Notebook runs in a browser on a localhost server or on a web server, for example remotely on a cluster or on [Google cloud](https://colab.research.google.com/). In Jupyter you mix text (documentation or explanation) with code and images (plots for example). Jupyter is cell-based, meaning that code is run per cell. The variables and objects are stored in memory across cells. Since Jupyter saves the state, including the output of a cell, it does not work very well with git. Additional tools are needed for colaborating and making sure that the output from one used does not interfere with another user's output, even if it is the same output. 
+  
 Lastly, an IDE that is good to mention is [Spyder](https://www.spyder-ide.org/). Spyder is a lightweight IDE, it is similar to Rstudio. 
-
-
 
 ## Positron
 
@@ -213,7 +210,7 @@ Positron is a complete IDE that is used by many developers, Python developers bu
 
 <img src="images/positron/empty-positron.png" alt="Positron when you open it for the first time" width="100%"></img>
 
-To get started in Positron we will set up a basic project structure and run some very basic code. There is a difference opening a file and opening a project in Positron. Opening a file will let you edit that file and possibly run it. Opening a directory or a project consisting of multiple (sub)directories will let you set a default interpreter, search and replace throughout the project and navigate to function imports and many more advantages. We recommend you to generally use a seperate project for each tutorial, exercise and assignment. In that way you can use dedicated environments and keep a coherent folder structure throughout the course. 
+To get started in Positron we will set up a basic project structure and run some very basic code. There is a difference between opening a **file** and opening a **project** in Positron. Opening a file will let you edit that file and possibly run it (with the default interpreter). Opening a directory or a project consisting of multiple (sub)directories will let you set a default interpreter, search and replace throughout the project and navigate to function imports and many more advantages. We recommend you to generally use a seperate project for each tutorial, exercise and assignment. In that way you can use dedicated environments and keep a coherent folder structure throughout the course. 
 
 Create an empty folder `MyPackage` and open it using the button that shows in the main screen when you open Positron. 
 Create the following file: 
@@ -249,7 +246,7 @@ Positron directly recognizes the python file extension (.py) and does some sugge
   * Testing, for testing code (we will not use this throughout the course) 
 
 ```{block type="alert alert-danger"}
-**Warning for students taking the course**: Positron comes with advanced integration of generative AI. It is recommended to not make use of GenAI while learning to code. Struggling through how to get a script working is how you learn, and that is what this course is about. Generating the correct result will not teach you anything.
+**Warning for students taking the course**: Positron comes with advanced integration of generative AI. It is recommended to not make use of GenAI while learning to code. Struggling through how to get a script working is how you learn, and that is what this course is about. Generating the correct result will not teach you anything, it's like ordering a pizza for a cooking class or taking a taxi for running exercise.
 
 It is recommended to turn off automatic features that copilot offers. You can do this by
 1.  going  to File → Preferences → Settings (or press Ctrl+,). 
@@ -283,7 +280,7 @@ some_function(5)
 A yellow squiggly line showed up. This means something is wrong with the code. And this is right, if we would run the code python would complain that the function is not known. We forgot to import it, we defined it but did not import it yet. If you stand with your cursor in the function call, and pres `ctrl` + `.`, Positron will try to figure out how to solve the issue. In this case it proposes to import it from `MyPackage.my_package`. If you press enter it imports the function. You can now run the function. 
 
 If you press `ctrl` and click on the function in `main.py` you will open the function definition. This is very useful when navigating through a large project.
-
+ 
 ### Environments in Positron
 
 As we mentioned before the numbers in the top right show the version of the python interpreter associated with the project. We learned about environments before, so let's create an environment. Positron comes with a bash terminal. If you ran some code before this might be open, otherwise click terminal in the top menu (in the same section as `File` and `Edit`) or press `ctrl`+`shift`+\` (use the back tick, most likely on the top left of your keyboard.). Another way to open the terminal is to press `Ctrl` + `Shift` + `P` and type terminal, and click Create New Terminal (With Profile). `Ctrl` + `Shift` + `P` opens the command pallet, and by searching in here you can access almost all functionality from Positron. It is usually a good start if you are looking for something, just start typing and see if the correct option comes up. 
@@ -542,7 +539,7 @@ mkdir output
 
 And open it with Positron by clicking _File_ and _Open Folder_. 
 
-We only made a directory for output, because no input data or separate scripts are created in this tutorial. Next, we will create a pixi environment. First initiate the environemnt, name it `refresher`, and add the following packages into the toml file:
+We only made a directory for output, because no input data or separate scripts are created in this tutorial. Next, we will create a pixi environment. First initiate the environemnt, name it `refresher`, and add the following packages to the environment:
 
 ```
   - python
