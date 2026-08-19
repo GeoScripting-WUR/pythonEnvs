@@ -208,7 +208,7 @@ Lastly, an IDE that is good to mention is [Spyder](https://www.spyder-ide.org/).
 
 Positron is a complete IDE that is used by many developers, Python developers but also developers for other languages. 
 
-<img src="images/positron/empty-positron.png" alt="Positron when you open it for the first time" width="100%"></img>
+<img src="images/positron/empty_positron.png" alt="Positron when you open it for the first time" width="100%"></img>
 
 To get started in Positron we will set up a basic project structure and run some very basic code. There is a difference between opening a **file** and opening a **project** in Positron. Opening a file will let you edit that file and possibly run it (with the default interpreter). Opening a directory or a project consisting of multiple (sub)directories will let you set a default interpreter, search and replace throughout the project and navigate to function imports and many more advantages. We recommend you to generally use a seperate project for each tutorial, exercise and assignment. In that way you can use dedicated environments and keep a coherent folder structure throughout the course. 
 
