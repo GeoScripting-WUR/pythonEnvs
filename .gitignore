@@ -7,6 +7,5 @@
 .pixi/*
 !.pixi/config.toml
 
-index_files/
 /.quarto/
 **/*.quarto_ipynb
