@@ -1,33 +1,18 @@
 ---
 pagetitle: "Python Environments"
-author: "Arno Timmer, Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Johannes Eberenz, Dainius Masiliunas, David Swinkels, Judith Verstegen, Corné Vreugdenhil"
-date: "`r format(Sys.time(), '%d %B, %Y')`"
-output:
-  rmdformats::html_clean:
+author: "Arno Timmer, Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Johannes Eberenz, Dainius Masiliunas, David Swinkels, Judith Verstegen, Corné Vreugdenhil, Paolo Dal Lago"
+date: today
+format:
+  html:
     title: "Python Environments"
-    theme: "simplex"
-    highlight: zenburn
-    menu: FALSE
-    theme.chooser: TRUE
-    highlight.chooser: TRUE
+    theme: simplex
+    highlight-style: zenburn
+    toc: true
+    toc-location: left
+    css: styles.css
 ---
 
-```{css, echo=FALSE}
-@import url("https://netdna.bootstrapcdn.com/bootswatch/3.0.0/simplex/bootstrap.min.css");
-.main-container {max-width: none;}
-pre {color: inherit; background-color: inherit;}
-code[class^="sourceCode"]::before {
-  content: attr(class);
-  display: block;
-  text-align: right;
-  font-size: 70%;
-}
-code[class^="sourceCode r"]::before { content: "R Source";}
-code[class^="sourceCode python"]::before { content: "Python Source"; }
-code[class^="sourceCode bash"]::before { content: "Bash Source"; }
-```
-
-<font size="6">[WUR Geoscripting](https://geoscripting-wur.github.io/)</font> <img src="https://geoscripting-wur.github.io/figs/WUR_RGB_standard_2025.svg" alt="WUR logo" style="height: 50px;"/>
+[[WUR Geoscripting](https://geoscripting-wur.github.io/)]{.page-header-title} <img src="https://geoscripting-wur.github.io/figs/WUR_RGB_standard_2025.svg" alt="WUR logo" class="page-header-logo"/>
 
 # Python Environments
 
@@ -35,13 +20,11 @@ code[class^="sourceCode bash"]::before { content: "Bash Source"; }
 ## Introduction
 
 Good afternoon and welcome to the Python part of this course! Today we will introduce how we will work with Python during this course and show some alternative methods. If you are unfamiliar with Python and/or feel that you need more training, follow one of the Datacamp courses as introduction into Python.s
-
-
 * [Introduction to Python](https://www.datacamp.com/courses/intro-to-python-for-data-science) | recommended to follow if you haven't any scripting experience so far
 * [Python for R users](https://www.datacamp.com/courses/python-for-r-users) | recommended if you have experience already in R
 
 ## Today’s Learning objectives
-
+ 
 - Know how to work with virtual environments: *pixi*
 - Know how to run a Python script from the terminal
 - Get introduced to Python editors and IDEs
@@ -77,10 +60,10 @@ Relevant packages for this course are for example:
 ## Python package management
 The high availability of packages is also a threat sometimes. Packages make use of code and functionality from other packages. We call this "software dependency". If a piece of software is developed depending on a package, but this packages changes later on, the initial piece of software might not work anymore. Different packages require different dependencies that they are built upon. See for example the [dependencies of GeoPandas](https://github.com/geopandas/geopandas/blob/main/pyproject.toml#L22). It is important to make sure all these dependencies are working together and that the right versions of the dependencies are used. Luckily, a set of tools exist for installing and managing Python packages. It is possible to install packages on your main Python installation (This main python is called the **base** python interpreter), but sooner or later you will get conflicting Python packages since packages have varying dependencies and you might have installed several versions of the same package. It can even break your system Python interpreter.
 
-Therefore, we strongly recommend to use a Python package manager that uses virtual environments. This way, you can create a separate environment on your machine for each project you are working on. In these environments, any dependency of the project, such as python packages, other software or C libraries can be installed. We will use them here for installing Python packages. Packages installed in one environment do not interfere with your base Python interpreter or with other environments. Additionally, it is possible to export and share  a complete list of the requirements for your (open source) project with collaborators or users of your code. In this way, collaborators can install the dependencies and start working with your code right away, instead of struggling with dependecies first (this is called [Dependency Hell](https://en.wikipedia.org/wiki/Dependency_hell)). 
+Therefore, we strongly recommend to use a Python package manager that uses virtual environments. This way, you can create a separate environment on your machine for each project you are working on. In these environments, any dependency of the project, such as python packages, other software or C libraries can be installed. We will use them here for installing Python packages. Packages installed in one environment do not interfere with your base Python interpreter or with other environments. Additionally, it is possible to export and share  a complete list of the requirements for your (open source) project with collaborators or users of your code. In this way, collaborators can install the dependencies and start working with your code right away, instead of struggling with dependecies first (this is called [Dependency Hell](https://en.wikipedia.org/wiki/Dependency_hell). 
 
 ## Pixi 
-Pixi is a cross-platform package management tool written in rust by the company __prefix.dev__. Pixi packages 3  features. **Virtual environment management**, **Package Management** and **Task Management**. For us, the environment and package management are the most important. Pixi allows you to create virtual environments per project, isolating packages from other projects. For installing packages in these environments, and making sure the packages use the right dependencies, it uses both **pip** and **conda**. Pip is a installer for python packages. Pip by itself is good in installing python packages, but not very good in protecting you from dependency hell. Pip installs packages from [PyPi](https://pypi.org/), a large repository of python packages. Conda allows you to install software packages in general, so for example python packages but also C++ tools. It installs from binary packages, making it a lot faster than having to build packages from the source code. It also means that it has a selected list of packages and therefor a bit lower availability of packages than pip. These lists are called channels, and we can choose from which channel to install. Combining conda and pip was a pain for a very long time. A package installed by pip was sometimes also installed as a dependency by conda, since these two tools were not communicating with eachother. It often resulted in packages clashing and making environments break easily. Pixi makes it easy and fast to install packages using both conda and pip. Additionally, __prefix.dev__ wrote conda from the ground up using rust, including a lot of features that make the same experience a lot faster. Also they use **UV** (also written in Rust) to handle some pip functionality, allowing for better integration and, most importantly, a lot faster environment solving and installation than conda allowed before.
+Pixi is a cross-platform package management tool written in rust by the company __prefix.dev__. Pixi packages 3  features: **Virtual environment management**, **Package Management** and **Task Management**. For us, the environment and package management are the most important. Pixi allows you to create a virtual environment per project, isolating packages from other projects. For installing packages in these environments, and making sure the packages use the right dependencies, it uses both **pip** and **conda**. Pip is an installer for Python packages. Pip by itself is good in installing python packages, but not very good in protecting you from dependency hell. Pip installs packages from [PyPi](https://pypi.org/), a large repository of Python packages. Conda allows you to install software packages in general, so for example Python packages but also C++ tools. It installs from binary packages, making it a lot faster than having to build packages from the source code. It also means that it has a selected list of packages and therefore a bit lower availability of packages than pip. These lists are called channels, and we can choose from which channel to install. Combining conda and pip was a pain for a very long time. A package installed by pip was sometimes also installed as a dependency by conda, since these two tools were not communicating with eachother. It often resulted in packages clashing and making environments break easily. Pixi makes it easy and fast to install packages using both conda and pip. Additionally, __prefix.dev__ wrote conda from the ground up using rust, including a lot of features that make the same experience a lot faster. Also they use **UV** (also written in Rust) to handle some pip functionality, allowing for better integration and, most importantly, a lot faster environment solving and installation than conda allowed before.
 
 ## Pixi installation
 To install, run the following line in the bash shell. 
@@ -97,10 +80,8 @@ Creating a project that uses pixi starts with a [manifest](https://pixi.prefix.d
 pixi init example
 ```
 
-This will install pixi in `~/.pixi`. Restart your shell to be able to use pixi in your terminal. 
-
 ## Using pixi
-After running this, a directory should be created with the name of the project that we can change into using `cd`. When listing the files (`ls`), 3 files should be present: `.gitattributes`, `.gitignore`, and `pixi.toml`. Of these files, the first 2 are so-called 'hidden files'; they are not by default shown in the file explorer, meaning they might not show up in the terminal output. The contents of `pixi.toml` look like this:
+After running this, a directory should be created with the name of the project that we can change into using `cd`. When listing the files (`ls -a`), 3 files should be present: `.gitattributes`, `.gitignore`, and `pixi.toml`. The contents of `pixi.toml` look like this:
 
 ```{toml}
 [workspace]
@@ -116,7 +97,7 @@ version = "0.1.0"
 
 ```
 
-The **workspace** defines the metadata and properties for the project, **Tasks** can be used to configure tasks, allowing you to for example pass environment variables and running different parts of scripts easily, (we will not use this during this course, but look at the [pixi documentation](https://pixi.prefix.dev/latest/workspace/advanced_tasks/) for more information), and **dependencies** defines the packages dependencies. It can list channels to define from which [conda channel](https://conda.org/learn/faq/#what-is-a-conda-channel) the packages are installed. 
+The **workspace** defines the metadata and properties for the project, **Tasks** can be used to configure tasks, allowing you to for example pass environment variables and running different parts of scripts easily, (we will not use this during this course, but loook at the [pixi documentation](https://pixi.prefix.dev/latest/workspace/advanced_tasks/) for more information), and **dependencies** defines the packages dependencies. It can list channels to define from which [conda channel](https://conda.org/learn/faq/#what-is-a-conda-channel) the packages are installed. 
 
 Now we have an empty pixi project, let's add some packages to it. We have entered the python week, so lets add python as a dependency. Since Pixi can use a large variety of software, we have to be specific, and install python as first thing. Installing a pyc
 
@@ -212,17 +193,17 @@ Lastly, an IDE that is good to mention is [Spyder](https://www.spyder-ide.org/).
 
 Positron is a complete IDE that is used by many developers, Python developers but also developers for other languages. 
 
-<img src="images/positron/empty_positron.png" alt="Positron when you open it for the first time" width="100%"></img>
+![Positron when you open it for the first time](images/positron/empty_positron.png){width="100%"}
 
 To get started in Positron we will set up a basic project structure and run some very basic code. There is a difference between opening a **file** and opening a **project** in Positron. Opening a file will let you edit that file and possibly run it (with the default interpreter). Opening a directory or a project consisting of multiple (sub)directories will let you set a default interpreter, search and replace throughout the project and navigate to function imports and many more advantages. We recommend you to generally use a seperate project for each tutorial, exercise and assignment. In that way you can use dedicated environments and keep a coherent folder structure throughout the course. 
 
-In your Positron terminal, go to the Documents directory and create a new pixi project `MyPackage`, by running:
+In your Positron terminal, create a new pixi project `MyPackage`, by running:
 
 ```{Python, engine.path='/usr/bin/python3', eval=TRUE}
 pixi init MyPackage
 ```
 
-This line creates a new folder called MyPackage. Open it via Positron (or use 'cd MyPackage' in bash). When you are in the directory Documents/MyPacakge run
+This line creates a new folder called MyPackage. Open it via Positron (or use 'cd MyPackage' in bash). When you are in the directory MyPacakge run
 
 ```{Python, engine.path='/usr/bin/python3', eval=TRUE}
 pixi add python
@@ -236,7 +217,7 @@ print('hello world')
 
 You can run the full code by pressing the play button on the top left. Select Run Python File in Terminal (from the drop-down menu next to the play button) to see the output in the Terminal window.
 
-When you do this, a terminal pops up, showing the output of the file. In Positron we normally run code per file. In python, running code per file is the the normal way to go. However, you can also run the single lines as we are used to in R by using CTRL+ENTER, and see the output line by line in the Console window.
+When you do this, a terminal pops up, showing the output of the file. Although Positron allows you to run python code line by line, in Python code is often run per file. However, you can also run the single lines as we are used to in R by using CTRL+ENTER, and see the output line by line in the Console window.
 
 Positron directly recognizes the python file extension (.py) and does some suggestions. In the top right you can what type of file Positron thinks you are working in, it also shows a number, most likely 3.14.x if you are following this course in 2026. This number is the python version of the interpreter that is now running, more on this later. In the left there is a column with some buttons. These buttons are, from top to bottom, for:
 
@@ -260,26 +241,26 @@ Uncheck or set this to "false" to disable them globally.
 
 ```
 
-<img src="images/positron/main.py.png" alt="The main.py script" width="100%"></img>
+![The main.py script](images/positron/main.py.png){width="100%"}
 
 
 ### Extensions 
 As you can see, already out of the box there is some python functionality that is built into Positron, but there is more.
 Open the extensions page, and note that the extensions *Python*,  *Python Debugger* and *jupyter* were pre-installed for you. These are the extensions that we will use throughout the course, more is not necessary for now, but there is a whole world out there. 
 
-To show you some of this functionality, write the following code in the `MyPackage.__init__.py` (create a new python file called "__init__.py" in the MyPackage folder and write on it): 
+To show you some of this functionality, write the following code in the `MyPackage.some_functions.py` (create a new python file called `some_functions.py` in the MyPackage folder and write the following code in it): 
 
 ```{Python, engine.path='/usr/bin/python3', eval=TRUE}
 def some_function(a_number):
     print(f'I am printing the number {a_number}') # This is is a formatted string
 ```
 
-Now, in the `main.py` file, run the function.:
+Now, in the `main.py` file, write the code to run the function.:
 ```{Python, engine.path='/usr/bin/python3', eval=TRUE}
 some_function(5)
 ```
 
-A red squiggly line showed up. This means something is wrong with the code. And this is right, if we would run the code python would complain that the function is not known. We forgot to import it, we defined it but did not import it yet. If you stand with your cursor in the function call, and pres `ctrl` + `.`, Positron will try to figure out how to solve the issue. In this case it proposes to import it from `__init__`. If you press enter it imports the function (from __init__ import some_function). You can now run the function. 
+Before running, a red squiggly line showed up. This means something is wrong with the code. And this is right, if we would run the code python would complain that the function is not known. We forgot to import it, we defined it but did not import it yet. If you stand with your cursor in the function call, and pres `ctrl` + `.`, Positron will try to figure out how to solve the issue. In this case it proposes to import it from `some_functions`. If you press enter it imports the function (`from some_functions import some_function`). You can now run the function. 
 
 If you press `ctrl` and click on the function in `main.py` you will open the function definition. This is very useful when navigating through a large project.
  
@@ -300,7 +281,7 @@ As before, you can either use the pixi command to run the python file from the t
 
 pixi shell
 # You should see the name of your environment in brackets before your curent working directory. 
-#(MyPackage) osboxes@geoscripting: ~Documents/MyPackage$
+#(MyPackage) osboxes@geoscripting: ~/MyPackage$
 # now you can run
 python main.py
 
@@ -309,11 +290,9 @@ python main.py
 If `(MyPackage)` is visible before the active line in the terminal the environment is successfully activated. However, this is something different than associating it to the project, if you run a file this interpreter will still not be used. To do this we are going to use the Command Palette. Click the bar in the  top center or press `Ctrl` + `Shift` + `p` to open it. Type `>Python: select interpreter`. The `>` sign tells Positron your are looking for commands. Without you can search files in the project. It auto-completes, so `python` is enough. Select it. It should already show up. It also gives the option to create a new environment, more on that later. 
 
 
-### Debugger & REPL
+### Debugger
 
-#### Debugger
-
-The *debugger* and the interactive *REPL* _(Read-Evaluate-Print Loop)_ are tools developers use to make developing easier. Firstly the debugger. The debugger is a way of running code where you can set breakpoints and inspect the state of the code and all the variables and objects in memory. While at a checkpoint you can manipulate variables, print them and test small pieces of code on them to figure out how to proceed. From the checkpoint it is possible to proceed line by line, stepping into your function or imported packages to get a good understanding of what is happening and often identifying issues. Sounds good right? 
+The *debugger* is a tool developers use to make developing easier. Firstly the debugger. The debugger is a way of running code where you can set breakpoints and inspect the state of the code and all the variables and objects in memory. While at a checkpoint you can manipulate variables, print them and test small pieces of code on them to figure out how to proceed. From the checkpoint it is possible to proceed line by line, stepping into your function or imported packages to get a good understanding of what is happening and often identifying issues. Sounds good right? 
 
 You start the debugger by clicking on the small drop down arrow right next to the run arrow, and click Python Debugger: Debug Python File. If you didn't set a break-point the code will run as normal, but the code will take a bit longer to run. The real magic begins if we set a break-point. Click left of the line number next to where the function `some function` is called in `main.py` and debug the file again. Now, some other buttons showed up on the top. These buttons help you navigate through the code: 
   * Continue (`F5`): continue running the script until either the next break-point or finish running
@@ -323,25 +302,9 @@ You start the debugger by clicking on the small drop down arrow right next to th
   * Restart (`ctrl` + `shift` + `F5`): Re run the script 
   * Stop (`shift` + `f5`): Stop the debugger 
 
-<img src="images/vscode/debugger.png" alt="The debugger in VSCode" width="100%"></img>
+![The debugger in VSCode](images/vscode/debugger.png){width="100%"}
 
 If you step into the function we can find out the real value of the debugger. On the top left panel we can see the local variables, the variables that are known within the function, and the global variables. These are the variables for this module. In the bottom left we can switch to different modules, when clicking on `<module>   main.py` we can inspect the variables known in the script `main.py`. It is directly clear how python handles variables, what is known within a function and what is not. Switch to the `some_function` scope and you can see there is 1 local variable `a_number` which is the input the the function, 5 in this example. When you will start making use of more advanced objects with properties and methods this variable overview will become more elaborate.
-
-#### REPL
-Additionally to the debugger, you can play around with code in jupyter style notebooks. You can start the repl by opening the command palette (`Ctrl` + `Shift` + `P`) and type _repl_, and click _'Python: Start Native Python REPL'_. A new window will show up. You can create a new cell by hovering the mouse on the window and select 'Code'. If you type some python in the cell, for example `print('hello everybody!!')`. The code you ran shows up in a cell and the output in the cell below. This is how notebooks work, they contain code per cell and show the results in line. 
-
-Notebooks allow you to show visuals inline as well. For example we can show plots or an interactive map, directly in the notebook. Type the following Python code in the code cell:
-
-```{Python,engine.path='/usr/bin/python3', eval=FALSE}
-import folium
-
-m = folium.Map(location=[51.9700000, 5.6666700], zoom_start=13)
-m
-```
-
-Run the code cell by selecting it and pressing the *Run* button, or press *CTRL + Enter* or *Shift + Enter*. You'll see a map visualized below your code, similar to the one below. Try to drag the map to play around with it. 
-
-<img src="images/WUR_Basic_Folium_Map.png" alt="Wageningen University Basic Folium map" width="100%"></img>
 
 
 ### Using Git source control in Positron
@@ -363,6 +326,8 @@ This interface is especially helpful for beginners who prefer visual feedback or
 
 #### Start from a Git Repository
 
+![git in positron](images/vscode_git/git_vscode_1.png){style="float:right; width:40%; margin: 0 0 1em 1em;"}
+
 The initial state of the **Source Control** panel depends on whether you've opened a folder and whether that folder is already a Git repository:
 
 - If **no folder is opened**, you’ll see options to:
@@ -378,10 +343,12 @@ The initial state of the **Source Control** panel depends on whether you've open
   - A `Changes` section listing modified or new files
   - A `GRAPH` section showing the Git commit history in visual form
 
-<img src="images/vscode_git/git_vscode_1.png" alt="Source Control panel" width="100%"></img>
 
-
+::: {style="clear:both;"}
+:::
 #### `git status` – View modified files
+
+![Source Control panel, files status](images/vscode_git/git_vscode_2.png){style="float:right; width:40%; margin: 0 0 1em 1em;"}
 
 Under the `Changes` section, you'll see all modified, untracked, or staged files. Each file has a status label:
 
@@ -391,8 +358,8 @@ Under the `Changes` section, you'll see all modified, untracked, or staged files
 
 You can click on any file to view the diff — i.e., what lines have been changed — in a side-by-side comparison.
 
-<img src="images/vscode_git/git_vscode_2.png" alt="Source Control panel, files status" width="100%"></img>
-
+::: {style="clear:both;"}
+:::
 
 #### `git add` / `git reset` – stage or unstage Files
 
@@ -402,8 +369,11 @@ To **unstage** a file (equivalent to `git reset HEAD`), hover over it again (now
 
 This allows you to control which files you want to include in your next commit.
 
-
+::: {style="clear:both;"}
+:::
 #### `git commit` – Commit your changes
+
+![Source Control panel, commit message](images/vscode_git/git_vscode_3.png){style="float:right; width:40%; margin: 0 0 1em 1em;"}
 
 Once you've staged the desired files, you can commit them:
 
@@ -412,31 +382,51 @@ Once you've staged the desired files, you can commit them:
 
 Positron may open a `COMMIT_EDITMSG` tab for a longer message if needed. You could also fill in the commit message above the commit blue bar. After committing, your changes will appear as a new node in the `GRAPH` panel, showing a visual update to the repository’s commit history.
 
-<img src="images/vscode_git/git_vscode_3.png" alt="Source Control panel, commit message" width="100%"></img>
+::: {style="clear:both;"}
+:::
 
 #### `git push` – push local commits to remote
 
+![git pull](images/vscode_git/git_vscode_5.png){style="float:right; width:40%; margin: 0 0 1em 1em;"}
+
 To **push** your local commits to a remote repository (like GitHub), click the `...` (More Actions) menu in the top-right of the Source Control panel, and then select **Push**.
 
-<img src="images/vscode_git/git_vscode_5.png" alt="Source Control panel, git pull" width="100%"></img>
+::: {style="clear:both;"}
+:::
+![git push!](images/vscode_git/git_vscode_4.png){style="float:right; width:40%; margin: 0 0 1em 1em;"}
 
 Once done, your changes will be reflected in the remote repository.
 
-<img src="images/vscode_git/git_vscode_4.png" alt="Source Control panel, new push shown in GRAPH" width="100%"></img>
+::: {style="clear:both;"}
+:::
 
 #### `git pull` – download and Merge Remote Changes
 
 To update your local repository with any changes from the remote, open the `...` menu in the Source Control panel and select **Pull**.
 
+
 In this section, we demonstrate how Positron handles *artificially created conflicts* (i.e., when the local and remote branches diverge). You don’t need to follow along step-by-step — just observe how it works in the interface. In `GRAPH`, the divergent branches will be shown quite intuitively:
 
-<img src="images/vscode_git/git_vscode_7_merge.png" alt="Source Control panel, divergent branches" width="100%"></img>
+
+![Diverging branches](images/vscode_git/git_vscode_7_merge.png){style="float:right; width:40%; margin: 0 0 1em 1em;"}
+
+::: {.centered}
+![Source Control panel, conflicts in two branches](images/vscode_git/git_vscode_8_merge.editor.png){width="50%"}
+::: 
+
+
 
 If someone else (or you, on another machine) has pushed changes to the remote, pulling will fetch those changes and attempt to merge them into your current branch. However, if your local branch has diverged from the remote, Git requires a strategy to reconcile them — either by **merging** or **rebasing**. Unlike the terminal, **Positron does not prompt you explicitly** when this happens. Instead, the pull will fail until you configure your preferred reconciliation strategy. You can set this using the terminal inside Positron `git config --global pull.rebase false`. After configuring, subsequent pulls will proceed smoothly.
 
 Positron provides a **3-way merge editor** to help resolve them visually. Files with conflicts will show a **Resolve in Merge Editor** button at the bottom right — click it to open the editor.
 
-<img src="images/vscode_git/git_vscode_8_merge.editor.png" alt="Source Control panel, conflicts in two branches" width="100%"></img>
+
+
+
+:::{.centered}
+![Source Control panel, 3 way merge editor](images/vscode_git/git_vscode_9_merge.editor2.png){width="50%"}
+:::
+
 
 The 3-way merge editor displays:
 
@@ -446,11 +436,11 @@ The 3-way merge editor displays:
 
 You can click buttons above each section to choose whether to accept incoming, current, or both changes. 
 
-<img src="images/vscode_git/git_vscode_9_merge.editor2.png" alt="Source Control panel, 3 way merge editor" width="100%"></img>
+
 
 After resolving all conflicts and completing the merge, you’ll see the branches merged back together in the `GRAPH` panel:
 
-<img src="images/vscode_git/git_vscode_10_one.branch.again.png" alt="Source Control panel, merged into one branch" width="100%"></img>
+![Source Control panel, merged into one branch](images/vscode_git/git_vscode_10_one.branch.again.png){style="float:right; width:40%; margin: 0 0 1em 1em;"}
 
 #### More!
 
@@ -467,11 +457,7 @@ The functionality we showed now only touch a very small tip of the iceberg of al
   - [A cool interactive python feature](https://www.youtube.com/watch?v=lwN4-W1WR84)
   
 
-## Different ways to run notebooks
-
-We have seen how we can use notebooks in the REPL, but there are different ways and this is the power of notebooks. Originally, notebooks were introduced by Jupyter. 
-
-### Jupyter Notebook
+## Jupyter Notebook
 
 Jupyter Notebook is actually not a IDE but it is very useful for writing code. Jupyter stands for the languages that once can use (*JU*lia, *PY*thon and *R*) and notebooks means that they are actually files instead of an IDE (such as Rstudio or Spyder). The notebooks can be interpreted and run by varying interpreters of which we will cover two later on. Jupyter Notebook integrates code and visualization, and are therefore very helpful for demonstration purposes and to be run by online interpreters (such as Google Colab). First we will show how to run Jupyter Notebook locally. To do this install `jupyter` and the module `folium` in an existing or new environment that includes Python. To start Jupyter type in the terminal:
 
