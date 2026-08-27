@@ -79,6 +79,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-3fd26f1720109480f9692f3993e9ff04.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -379,7 +382,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Positron is a complete IDE that is used by many developers, Python developers but also developers for other languages.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/positron/empty_positron.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><a href="images/positron/empty_positron.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Positron when you open it for the first time"><img src="images/positron/empty_positron.png" class="img-fluid figure-img" style="width:100.0%" alt="Positron when you open it for the first time"></a></p>
 <figcaption>Positron when you open it for the first time</figcaption>
 </figure>
 </div>
@@ -422,7 +425,7 @@ Uncheck or set this to “false” to disable them globally.
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/positron/main.py.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><a href="images/positron/main.py.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="The main.py script"><img src="images/positron/main.py.png" class="img-fluid figure-img" style="width:100.0%" alt="The main.py script"></a></p>
 <figcaption>The main.py script</figcaption>
 </figure>
 </div>
@@ -464,7 +467,7 @@ Uncheck or set this to “false” to disable them globally.
 <p>You start the debugger by clicking on the small drop down arrow right next to the run arrow, and click Python Debugger: Debug Python File. If you didn’t set a break-point the code will run as normal, but the code will take a bit longer to run. The real magic begins if we set a break-point. Click left of the line number next to where the function <code>some function</code> is called in <code>main.py</code> and debug the file again. Now, some other buttons showed up on the top. These buttons help you navigate through the code: * Continue (<code>F5</code>): continue running the script until either the next break-point or finish running * Step over (<code>F10</code>): Skip this function and continue to the next line * Step into (<code>F11</code>): step into the function * step out (<code>shift</code> + <code>F11</code>): set out of the function (in this case we are not in a function) * Restart (<code>ctrl</code> + <code>shift</code> + <code>F5</code>): Re run the script * Stop (<code>shift</code> + <code>f5</code>): Stop the debugger</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/vscode/debugger.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><a href="images/vscode/debugger.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="The debugger in VSCode"><img src="images/vscode/debugger.png" class="img-fluid figure-img" style="width:100.0%" alt="The debugger in VSCode"></a></p>
 <figcaption>The debugger in VSCode</figcaption>
 </figure>
 </div>
@@ -484,9 +487,9 @@ Uncheck or set this to “false” to disable them globally.
 <p>This interface is especially helpful for beginners who prefer visual feedback or want to avoid typing commands manually — though keep in mind that it may be less efficient than using the terminal.</p>
 <section id="start-from-a-git-repository" class="level4">
 <h4 class="anchored" data-anchor-id="start-from-a-git-repository">Start from a Git Repository</h4>
-<div class="quarto-figure quarto-figure-center" style="float:right; width:40%; margin: 0 0 1em 1em;">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/vscode_git/git_vscode_1.png" class="img-fluid figure-img"></p>
+<p><a href="images/vscode_git/git_vscode_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="git in positron"><img src="images/vscode_git/git_vscode_1.png" class="img-fluid figure-img" style="float:right; width:40%; margin: 0 0 1em 1em;" alt="git in positron"></a></p>
 <figcaption>git in positron</figcaption>
 </figure>
 </div>
@@ -515,9 +518,9 @@ Uncheck or set this to “false” to disable them globally.
 </section>
 <section id="git-status-view-modified-files" class="level4">
 <h4 class="anchored" data-anchor-id="git-status-view-modified-files"><code>git status</code> – View modified files</h4>
-<div class="quarto-figure quarto-figure-center" style="float:right; width:40%; margin: 0 0 1em 1em;">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/vscode_git/git_vscode_2.png" class="img-fluid figure-img"></p>
+<p><a href="images/vscode_git/git_vscode_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Source Control panel, files status"><img src="images/vscode_git/git_vscode_2.png" class="img-fluid figure-img" style="float:right; width:40%; margin: 0 0 1em 1em;" alt="Source Control panel, files status"></a></p>
 <figcaption>Source Control panel, files status</figcaption>
 </figure>
 </div>
@@ -545,9 +548,9 @@ Uncheck or set this to “false” to disable them globally.
 </section>
 <section id="git-commit-commit-your-changes" class="level4">
 <h4 class="anchored" data-anchor-id="git-commit-commit-your-changes"><code>git commit</code> – Commit your changes</h4>
-<div class="quarto-figure quarto-figure-center" style="float:right; width:40%; margin: 0 0 1em 1em;">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/vscode_git/git_vscode_3.png" class="img-fluid figure-img"></p>
+<p><a href="images/vscode_git/git_vscode_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Source Control panel, commit message"><img src="images/vscode_git/git_vscode_3.png" class="img-fluid figure-img" style="float:right; width:40%; margin: 0 0 1em 1em;" alt="Source Control panel, commit message"></a></p>
 <figcaption>Source Control panel, commit message</figcaption>
 </figure>
 </div>
@@ -563,9 +566,9 @@ Uncheck or set this to “false” to disable them globally.
 </section>
 <section id="git-push-push-local-commits-to-remote" class="level4">
 <h4 class="anchored" data-anchor-id="git-push-push-local-commits-to-remote"><code>git push</code> – push local commits to remote</h4>
-<div class="quarto-figure quarto-figure-center" style="float:right; width:40%; margin: 0 0 1em 1em;">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/vscode_git/git_vscode_5.png" class="img-fluid figure-img"></p>
+<p><a href="images/vscode_git/git_vscode_5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="git pull"><img src="images/vscode_git/git_vscode_5.png" class="img-fluid figure-img" style="float:right; width:40%; margin: 0 0 1em 1em;" alt="git pull"></a></p>
 <figcaption>git pull</figcaption>
 </figure>
 </div>
@@ -573,9 +576,9 @@ Uncheck or set this to “false” to disable them globally.
 <div style="clear:both;">
 
 </div>
-<div class="quarto-figure quarto-figure-center" style="float:right; width:40%; margin: 0 0 1em 1em;">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/vscode_git/git_vscode_4.png" class="img-fluid figure-img"></p>
+<p><a href="images/vscode_git/git_vscode_4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="git push!"><img src="images/vscode_git/git_vscode_4.png" class="img-fluid figure-img" style="float:right; width:40%; margin: 0 0 1em 1em;" alt="git push!"></a></p>
 <figcaption>git push!</figcaption>
 </figure>
 </div>
@@ -588,16 +591,16 @@ Uncheck or set this to “false” to disable them globally.
 <h4 class="anchored" data-anchor-id="git-pull-download-and-merge-remote-changes"><code>git pull</code> – download and Merge Remote Changes</h4>
 <p>To update your local repository with any changes from the remote, open the <code>...</code> menu in the Source Control panel and select <strong>Pull</strong>.</p>
 <p>In this section, we demonstrate how Positron handles <em>artificially created conflicts</em> (i.e., when the local and remote branches diverge). You don’t need to follow along step-by-step — just observe how it works in the interface. In <code>GRAPH</code>, the divergent branches will be shown quite intuitively:</p>
-<div class="quarto-figure quarto-figure-center" style="float:right; width:40%; margin: 0 0 1em 1em;">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/vscode_git/git_vscode_7_merge.png" class="img-fluid figure-img"></p>
+<p><a href="images/vscode_git/git_vscode_7_merge.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Diverging branches"><img src="images/vscode_git/git_vscode_7_merge.png" class="img-fluid figure-img" style="float:right; width:40%; margin: 0 0 1em 1em;" alt="Diverging branches"></a></p>
 <figcaption>Diverging branches</figcaption>
 </figure>
 </div>
 <div class="centered">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/vscode_git/git_vscode_8_merge.editor.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p><a href="images/vscode_git/git_vscode_8_merge.editor.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Source Control panel, conflicts in two branches"><img src="images/vscode_git/git_vscode_8_merge.editor.png" class="img-fluid figure-img" style="width:50.0%" alt="Source Control panel, conflicts in two branches"></a></p>
 <figcaption>Source Control panel, conflicts in two branches</figcaption>
 </figure>
 </div>
@@ -607,7 +610,7 @@ Uncheck or set this to “false” to disable them globally.
 <div class="centered">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/vscode_git/git_vscode_9_merge.editor2.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p><a href="images/vscode_git/git_vscode_9_merge.editor2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Source Control panel, 3 way merge editor"><img src="images/vscode_git/git_vscode_9_merge.editor2.png" class="img-fluid figure-img" style="width:50.0%" alt="Source Control panel, 3 way merge editor"></a></p>
 <figcaption>Source Control panel, 3 way merge editor</figcaption>
 </figure>
 </div>
@@ -620,9 +623,9 @@ Uncheck or set this to “false” to disable them globally.
 </ul>
 <p>You can click buttons above each section to choose whether to accept incoming, current, or both changes.</p>
 <p>After resolving all conflicts and completing the merge, you’ll see the branches merged back together in the <code>GRAPH</code> panel:</p>
-<div class="quarto-figure quarto-figure-center" style="float:right; width:40%; margin: 0 0 1em 1em;">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/vscode_git/git_vscode_10_one.branch.again.png" class="img-fluid figure-img"></p>
+<p><a href="images/vscode_git/git_vscode_10_one.branch.again.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Source Control panel, merged into one branch"><img src="images/vscode_git/git_vscode_10_one.branch.again.png" class="img-fluid figure-img" style="float:right; width:40%; margin: 0 0 1em 1em;" alt="Source Control panel, merged into one branch"></a></p>
 <figcaption>Source Control panel, merged into one branch</figcaption>
 </figure>
 </div>
@@ -1365,6 +1368,38 @@ Uncheck or set this to “false” to disable them globally.
   });
   </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
