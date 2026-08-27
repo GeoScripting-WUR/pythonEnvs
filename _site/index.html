@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Arno Timmer, Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Johannes Eberenz, Dainius Masiliunas, David Swinkels, Judith Verstegen, Corné Vreugdenhil">
+<meta name="author" content="Arno Timmer, Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Johannes Eberenz, Dainius Masiliunas, David Swinkels, Judith Verstegen, Corné Vreugdenhil, Paolo Dal Lago">
 <meta name="dcterms.date" content="2026-08-27">
 
 <title>Python Environments</title>
@@ -75,10 +75,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-f1a5c2bb43452cd3d80060817c0f5863.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ece42c8223ec2bf36298a08f122c9a68.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-3fd26f1720109480f9692f3993e9ff04.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -108,21 +111,81 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="floating quarto-light">
 
 <div id="quarto-search-results"></div>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#python-environments" id="toc-python-environments" class="nav-link active" data-scroll-target="#python-environments">Python Environments</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#todays-learning-objectives" id="toc-todays-learning-objectives" class="nav-link" data-scroll-target="#todays-learning-objectives">Today’s Learning objectives</a></li>
+  </ul></li>
+  <li><a href="#introduction-to-python-environments" id="toc-introduction-to-python-environments" class="nav-link" data-scroll-target="#introduction-to-python-environments">Introduction to Python &amp; Environments</a>
+  <ul class="collapse">
+  <li><a href="#python-package-management" id="toc-python-package-management" class="nav-link" data-scroll-target="#python-package-management">Python package management</a></li>
+  <li><a href="#pixi" id="toc-pixi" class="nav-link" data-scroll-target="#pixi">Pixi</a></li>
+  <li><a href="#pixi-installation" id="toc-pixi-installation" class="nav-link" data-scroll-target="#pixi-installation">Pixi installation</a></li>
+  <li><a href="#create-a-project" id="toc-create-a-project" class="nav-link" data-scroll-target="#create-a-project">Create a project</a></li>
+  <li><a href="#using-pixi" id="toc-using-pixi" class="nav-link" data-scroll-target="#using-pixi">Using pixi</a></li>
+  <li><a href="#collaborating-with-others" id="toc-collaborating-with-others" class="nav-link" data-scroll-target="#collaborating-with-others">Collaborating with others</a></li>
+  </ul></li>
+  <li><a href="#python-editors-and-ides" id="toc-python-editors-and-ides" class="nav-link" data-scroll-target="#python-editors-and-ides">Python editors and IDEs</a>
+  <ul class="collapse">
+  <li><a href="#positron" id="toc-positron" class="nav-link" data-scroll-target="#positron">Positron</a>
+  <ul class="collapse">
+  <li><a href="#extensions" id="toc-extensions" class="nav-link" data-scroll-target="#extensions">Extensions</a></li>
+  <li><a href="#environments-in-positron" id="toc-environments-in-positron" class="nav-link" data-scroll-target="#environments-in-positron">Environments in Positron</a></li>
+  <li><a href="#debugger" id="toc-debugger" class="nav-link" data-scroll-target="#debugger">Debugger</a></li>
+  <li><a href="#using-git-source-control-in-positron" id="toc-using-git-source-control-in-positron" class="nav-link" data-scroll-target="#using-git-source-control-in-positron">Using Git source control in Positron</a></li>
+  <li><a href="#extra-material" id="toc-extra-material" class="nav-link" data-scroll-target="#extra-material">Extra material</a></li>
+  </ul></li>
+  <li><a href="#jupyter-notebook" id="toc-jupyter-notebook" class="nav-link" data-scroll-target="#jupyter-notebook">Jupyter Notebook</a>
+  <ul class="collapse">
+  <li><a href="#google-colab" id="toc-google-colab" class="nav-link" data-scroll-target="#google-colab">Google Colab</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#putting-it-to-the-test" id="toc-putting-it-to-the-test" class="nav-link" data-scroll-target="#putting-it-to-the-test">Putting it to the test</a>
+  <ul class="collapse">
+  <li><a href="#setting-up-the-environment" id="toc-setting-up-the-environment" class="nav-link" data-scroll-target="#setting-up-the-environment">Setting up the environment</a></li>
+  <li><a href="#quick-refresher" id="toc-quick-refresher" class="nav-link" data-scroll-target="#quick-refresher">Quick refresher</a>
+  <ul class="collapse">
+  <li><a href="#printing-and-basic-data-types" id="toc-printing-and-basic-data-types" class="nav-link" data-scroll-target="#printing-and-basic-data-types">Printing and basic data types</a></li>
+  <li><a href="#basic-arithmetic-operations" id="toc-basic-arithmetic-operations" class="nav-link" data-scroll-target="#basic-arithmetic-operations">Basic arithmetic operations:</a></li>
+  <li><a href="#conditional-statements" id="toc-conditional-statements" class="nav-link" data-scroll-target="#conditional-statements">Conditional statements</a></li>
+  <li><a href="#loops-for-and-while" id="toc-loops-for-and-while" class="nav-link" data-scroll-target="#loops-for-and-while">Loops (for and while)</a></li>
+  <li><a href="#lists-and-basic-list-operations" id="toc-lists-and-basic-list-operations" class="nav-link" data-scroll-target="#lists-and-basic-list-operations">Lists and basic list operations</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
+  <li><a href="#dictionaries" id="toc-dictionaries" class="nav-link" data-scroll-target="#dictionaries">Dictionaries</a></li>
+  <li><a href="#importing-packages" id="toc-importing-packages" class="nav-link" data-scroll-target="#importing-packages">Importing packages</a></li>
+  <li><a href="#geodataframe" id="toc-geodataframe" class="nav-link" data-scroll-target="#geodataframe">GeoDataFrame</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#python-help" id="toc-python-help" class="nav-link" data-scroll-target="#python-help">Python help</a></li>
+  <li><a href="#more-info" id="toc-more-info" class="nav-link" data-scroll-target="#more-info">More info</a></li>
+  <li><a href="#sources-used" id="toc-sources-used" class="nav-link" data-scroll-target="#sources-used">Sources used:</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
+<h1 class="title">Python Environments</h1>
 </div>
 
 
@@ -132,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Arno Timmer, Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Johannes Eberenz, Dainius Masiliunas, David Swinkels, Judith Verstegen, Corné Vreugdenhil </p>
+             <p>Arno Timmer, Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Johannes Eberenz, Dainius Masiliunas, David Swinkels, Judith Verstegen, Corné Vreugdenhil, Paolo Dal Lago </p>
           </div>
   </div>
     
@@ -151,53 +214,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="cell">
-<style type="text/css">
-@import url("https://netdna.bootstrapcdn.com/bootswatch/3.0.0/simplex/bootstrap.min.css");
-.main-container {max-width: none;}
-pre {color: inherit; background-color: inherit;}
-code[class^="sourceCode"]::before {
-  content: attr(class);
-  display: block;
-  text-align: right;
-  font-size: 70%;
-}
-code[class^="sourceCode r"]::before { content: "R Source";}
-code[class^="sourceCode python"]::before { content: "Python Source"; }
-code[class^="sourceCode bash"]::before { content: "Bash Source"; }
-</style>
-</div>
-<p><font size="6"><a href="https://geoscripting-wur.github.io/">WUR Geoscripting</a></font> <img src="https://www.wur.nl/upload/854757ab-168f-46d7-b415-f8b501eebaa5_WUR_RGB_standard_2021-site.svg" alt="WUR logo" style="height: 35px; margin:inherit;"></p>
+<p><span class="page-header-title"><a href="https://geoscripting-wur.github.io/">WUR Geoscripting</a></span> <img src="https://geoscripting-wur.github.io/figs/WUR_RGB_standard_2025.svg" alt="WUR logo" class="page-header-logo"></p>
 <section id="python-environments" class="level1">
 <h1>Python Environments</h1>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Good afternoon and welcome to the python part of this course! Today we will introduce how we will work with Python during this course and show some alternative methods. If you are unfamiliar with Python and/or feel that you need more training, follow one of the Datacamp courses as introduction into Python <em>before today</em>:</p>
-<ul>
-<li><a href="https://www.datacamp.com/courses/intro-to-python-for-data-science">Introduction to Python</a> | recommended to follow if you haven’t any scripting experience so far</li>
-<li><a href="https://www.datacamp.com/courses/python-for-r-users">Python for R users</a> | recommended if you have experience already in R</li>
-</ul>
+<p>Good afternoon and welcome to the Python part of this course! Today we will introduce how we will work with Python during this course and show some alternative methods. If you are unfamiliar with Python and/or feel that you need more training, follow one of the Datacamp courses as introduction into Python.s * <a href="https://www.datacamp.com/courses/intro-to-python-for-data-science">Introduction to Python</a> | recommended to follow if you haven’t any scripting experience so far * <a href="https://www.datacamp.com/courses/python-for-r-users">Python for R users</a> | recommended if you have experience already in R</p>
 </section>
 <section id="todays-learning-objectives" class="level2">
 <h2 class="anchored" data-anchor-id="todays-learning-objectives">Today’s Learning objectives</h2>
 <ul>
-<li>Know how to work with virtual environments: <em>Conda</em> + <em>Mamba</em></li>
+<li>Know how to work with virtual environments: <em>pixi</em></li>
 <li>Know how to run a Python script from the terminal</li>
 <li>Get introduced to Python editors and IDEs</li>
 <li>Refresh Python programming knowledge</li>
-<li>Familiarize yourself with some visualization techniques</li>
 </ul>
 </section>
 </section>
 <section id="introduction-to-python-environments" class="level1">
 <h1>Introduction to Python &amp; Environments</h1>
-<p>Python is a jack-of-all-trades programming language that is free, flexible, open-source, cross-platform and has a very large community behind it, according to many rankings it’s the most popular programming language. If you ask Python programmers what they like most about Python, they will often cite its high readability and high availability of good packages. Python was developed by Guido van Rossum, a Dutch computer scientist. Python was designed to be an everyday programming language, easier to use than for example C++ or Java while still being able to do do almost everything. The thought has always been that the time of the programmer is more important than the time of the computer, therefor reading and writing Python code is relatively easy compared to compiled languages, but these compiled languages are sometimes quicker. Luckily there are lots of very quick functions available in Python that might be programmed in different languages.</p>
-<p>Because of the popularity, and therefor the large community, behind Python, there are many packages available for geoscripting, data wrangling, visualization, machine learning and for almost everything else. Additionally, there is a giant community present at for example <a href="https://stackoverflow.com/questions/tagged/python">stackoverflow</a> where you can find help if you are stuck. Also, since there is so many python code online, generative AI is relatively good at writing Python. Be careful though, a lot of the code is not written for spatial data analysis, so large language models might behave strangely.</p>
+<p>Python is a jack-of-all-trades programming language that is free, flexible, open-source, cross-platform and has a very large community behind it. According to many rankings it’s the most popular programming language. If you ask Python programmers what they like most about Python, they will often cite its high readability, multi-purposeness and high availability of good packages. Python was developed by Guido van Rossum, a Dutch computer scientist. Python was designed to be an everyday programming language, easier to use than for example C++ or Java while still being able to do do almost everything. The thought has always been that the time of the programmer is more important than the time of the computer, therefore reading and writing Python code is relatively easy compared to compiled languages, but these compiled languages are sometimes quicker. Luckily there are lots of very quick functions available in Python that might be programmed in different languages.</p>
+<p>Because of the popularity and the large community, there are many packages available for geoscripting, data wrangling, visualization, machine learning and for almost everything else. Additionally, there is a giant community present at for example <a href="https://stackoverflow.com/questions/tagged/python">stackoverflow</a> where you can find help if you are stuck. Also, since there is so many python code online, generative AI is relatively good at writing Python. Be careful though, a lot of the code is not written for spatial applications, so large language models might behave like a data scientist without GIS knowledge…</p>
 <p>Relevant packages for this course are for example:</p>
 <ul>
 <li>Geoscripting
 <ul>
 <li>GeoPandas (Vector Processing)</li>
+<li>Shapely (The core of Vector representation)</li>
 <li>Rasterio (Raster Processing)</li>
 <li>GDAL/OGR (Vector and Raster Processing)</li>
 <li>QGIS plugins (Open Source GIS)</li>
@@ -212,7 +255,7 @@ code[class^="sourceCode bash"]::before { content: "Bash Source"; }
 <ul>
 <li>Matplotlib (General Graphics)</li>
 <li>Seaborn (Statistical Graphics)</li>
-<li>Folium (Interactive Maps)</li>
+<li>LeafMap (Interactive Maps)</li>
 </ul></li>
 <li>Machine Learning
 <ul>
@@ -221,139 +264,148 @@ code[class^="sourceCode bash"]::before { content: "Bash Source"; }
 <li>PyTorch (Deep Learning)</li>
 </ul></li>
 </ul>
-<section id="python-package-management-with-conda" class="level2">
-<h2 class="anchored" data-anchor-id="python-package-management-with-conda">Python package management with Conda</h2>
-<p>The high availability of packages is also a threat sometimes. Packages also make use of code and functionality from other packages. We call this dependancy. If a piece of software is developed depending on a package, but this packages changes later on, the initial piece of software not work anymore. Different packages require different dependencies that they are built upon. It is important to make sure all these dependencies are working together and that the right versions of the dependencies are used. Luckily, a set of tools exist for installing and managing Python packages. It is possible to install packages on your main Python installation (This main python is called the <strong>base</strong> python interpreter), but sooner or later you will get conflicting Python packages since packages have varying dependencies and you might have installed several versions of the same package. It can even <a href="https://askubuntu.com/questions/95037/what-is-the-best-way-to-install-python-packages">break your system Python interpreter</a>.</p>
-<p>Therefore, we strongly recommend to use a Python package manager that uses virtual environments. This way, you can create a separate environment on your machine for each project. In these environments, any dependency of the project, such as python packages, other software or C libraries can be installed. We will use them here for installing Python packages. Packages installed in one environment do not interfere with your base Python or with other environments. Additionally, it is possible to export and share a complete list of the requirements for your (open source) project with collaborators or users of your code. In this way, collaborators can install the dependencies and start working with your code right away, instead of struggling with dependecies first (this is called <a href="https://en.wikipedia.org/wiki/Dependency_hell">Dependency Hell</a>.</p>
+<section id="python-package-management" class="level2">
+<h2 class="anchored" data-anchor-id="python-package-management">Python package management</h2>
+<p>The high availability of packages is also a threat sometimes. Packages make use of code and functionality from other packages. We call this “software dependency”. If a piece of software is developed depending on a package, but this packages changes later on, the initial piece of software might not work anymore. Different packages require different dependencies that they are built upon. See for example the <a href="https://github.com/geopandas/geopandas/blob/main/pyproject.toml#L22">dependencies of GeoPandas</a>. It is important to make sure all these dependencies are working together and that the right versions of the dependencies are used. Luckily, a set of tools exist for installing and managing Python packages. It is possible to install packages on your main Python installation (This main python is called the <strong>base</strong> python interpreter), but sooner or later you will get conflicting Python packages since packages have varying dependencies and you might have installed several versions of the same package. It can even break your system Python interpreter.</p>
+<p>Therefore, we strongly recommend to use a Python package manager that uses virtual environments. This way, you can create a separate environment on your machine for each project you are working on. In these environments, any dependency of the project, such as python packages, other software or C libraries can be installed. We will use them here for installing Python packages. Packages installed in one environment do not interfere with your base Python interpreter or with other environments. Additionally, it is possible to export and share a complete list of the requirements for your (open source) project with collaborators or users of your code. In this way, collaborators can install the dependencies and start working with your code right away, instead of struggling with dependecies first (this is called <a href="https://en.wikipedia.org/wiki/Dependency_hell">Dependency Hell</a>.</p>
 </section>
-<section id="mamba-installation" class="level2">
-<h2 class="anchored" data-anchor-id="mamba-installation">Mamba installation</h2>
-<p><em>Conda</em> is a widely used tool to manage Python environments and install packages. For this course, we will make use of <em>Mamba</em> instead, a fast drop-in reimplementation of the <em>Conda</em> package manager. It has its core parts implemented in C++ for maximum efficiency, makes use of parallel downloading of repository data and package files using multi-threading, and uses <code>libsolv</code> for (much) faster dependency solving. To install <em>Mamba</em> in your Linux environment, we have prepared a short <em>Bash</em> script for you. Just run the following lines of code, line by line, in a new terminal window.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/GeoScripting-WUR/InstallLinuxScript.git</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> InstallLinuxScript/user</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u+x ./install.sh</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">./install.sh</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>This will install <em>Mamba</em> into <code>~/mamba</code>. Finally, restart your terminal to be able to use <em>Mamba</em> and <em>Conda</em> in the terminal. Next, let’s see how to use <em>Mamba</em> in case you want make new virtual environments by yourself, or install packages after creating the environment.</p>
+<section id="pixi" class="level2">
+<h2 class="anchored" data-anchor-id="pixi">Pixi</h2>
+<p>Pixi is a cross-platform package management tool written in rust by the company <strong>prefix.dev</strong>. Pixi packages 3 features: <strong>Virtual environment management</strong>, <strong>Package Management</strong> and <strong>Task Management</strong>. For us, the environment and package management are the most important. Pixi allows you to create a virtual environment per project, isolating packages from other projects. For installing packages in these environments, and making sure the packages use the right dependencies, it uses both <strong>pip</strong> and <strong>conda</strong>. Pip is an installer for Python packages. Pip by itself is good in installing python packages, but not very good in protecting you from dependency hell. Pip installs packages from <a href="https://pypi.org/">PyPi</a>, a large repository of Python packages. Conda allows you to install software packages in general, so for example Python packages but also C++ tools. It installs from binary packages, making it a lot faster than having to build packages from the source code. It also means that it has a selected list of packages and therefore a bit lower availability of packages than pip. These lists are called channels, and we can choose from which channel to install. Combining conda and pip was a pain for a very long time. A package installed by pip was sometimes also installed as a dependency by conda, since these two tools were not communicating with eachother. It often resulted in packages clashing and making environments break easily. Pixi makes it easy and fast to install packages using both conda and pip. Additionally, <strong>prefix.dev</strong> wrote conda from the ground up using rust, including a lot of features that make the same experience a lot faster. Also they use <strong>UV</strong> (also written in Rust) to handle some pip functionality, allowing for better integration and, most importantly, a lot faster environment solving and installation than conda allowed before.</p>
 </section>
-<section id="mamba-usage" class="level2">
-<h2 class="anchored" data-anchor-id="mamba-usage">Mamba usage</h2>
-<p><em>Mamba</em> creates isolated conda environments with sets of packages, that do not interfere with your base Python or with other conda environments. To create an environment:</p>
+<section id="pixi-installation" class="level2">
+<h2 class="anchored" data-anchor-id="pixi-installation">Pixi installation</h2>
+<p>To install, run the following line in the bash shell.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">--name</span> geotest python numpy folium</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-qO-</span> https://pixi.sh/install.sh <span class="kw">|</span> <span class="fu">sh</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>This creates a new environment called <em>geotest</em> with <em>Python</em> and <em>NumPy</em> installed into the conda environment. Another option is to create an environment from a file. The advantage of using a file is that the file, with the dependencies can be shared within a project. For this applciation a <a href="https://yaml.org/">YAML</a> file is used. In this file all required packages are listed and if required which version should be used. An example of a YAML file is the following:</p>
-<pre><code>name: geotest
-dependencies:
-  - python
-  - numpy
-  - folium</code></pre>
-<p>The first line defines what the evnironment will be called (<code>geotest</code> in this example) and what packages should be installed (python and numpy). As you can see, this definition of the <code>geotest</code> environment is the exact same as the geotest environment as defined before. To create the geotest environment from a file, you first need to create a YAML file. You can do this by opening a text editor such as <code>gedit</code> or RStudio, pasting the lines above into a new file, and saving it to a new file named <code>env.yaml</code>, or however you want to call it and use the argument <code>--file</code> (or <code>--f</code> in short):</p>
+<p>This will install pixi in <code>~/.pixi</code>. Restart your shell to be able to use pixi in your temrinal.</p>
+</section>
+<section id="create-a-project" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-project">Create a project</h2>
+<p>Creating a project that uses pixi starts with a <a href="https://pixi.prefix.dev/latest/reference/pixi_manifest/">manifest</a> file called <code>pixi.toml</code>. In this file all the configuration information is stored, including the dependencies. Pixi can read this document, resolve the dependencies and install all necessary packages. A pixi project, called example in this case, can be initiated with the following command:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> env create <span class="at">-f</span> env.yaml</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Let’s list the currently available environments:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> info <span class="at">--envs</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><em>Mamba</em> puts an asterisk (*) in front of the active environment. Now we activate the environment. While <em>Mamba</em> replaces <em>Conda</em> for most commands, it does not replace <em>Conda</em> entirely. For example, this is not the case for (de)activating environments:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> activate geotest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>After this, the current environment is shown in parentheses in front of your prompt (<code>(geotest)$</code>). Note that the activated environment is only valid for the shell in which you activated it. For instance, if you close the shell window and open a new one you will have to activate it again.</p>
-<p>After creating a conda environment, (additional) Python packages can be installed. There are three possible ways to install packages, which we list below.</p>
-<ul>
-<li>Using <em>Mamba</em> to install and manage conda packages. This downloads conda packages using conda channels, which are URLs to directories containing the conda packages. <strong>Generally, installing conda packages using <em>Mamba</em> is the preferred method.</strong></li>
-<li>Using <em>pip</em> to install packages and <em>Mamba</em> to manage these packages. <em>pip</em> is available for Windows, macOS and Linux. <em>pip</em> can also install <a href="https://www.lfd.uci.edu/~gohlke/Pythonlibs">binary wheels on Windows</a>. You should generally not install packages from <em>pip</em> in a conda environment unless it’s the last resort. This is because after you use <em>pip</em> to modify an environment, you can no longer use <code>conda</code>/<code>mamba</code> to do so (trying that will break your environment, because <em>pip</em> does not communicate its changes to <em>Conda</em>). Hence install packages with <code>mamba</code> that you can first, and only then use <code>pip</code>, and then never touch the environment with <code>mamba</code> again (delete and start fresh if you need to).</li>
-<li>Using the distribution’s package manager (only on Ubuntu, that is <code>sudo apt-get install python-*</code>).</li>
-</ul>
-<p>The <code>mamba search</code> command searches a set of channels. By default, packages are automatically downloaded and updated from the default channel. To search for a package, type:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> search pandas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>This gives a list of all packages that have “pandas” in the name and lists all available versions. To install:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install pandas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>This installs the latest compatible version of <em>Pandas</em>. Note that this would install it into your currently activated environment.</p>
-<p>Note that you can also install multiple packages at the same time:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install geopandas matplotlib</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><em>Mamba</em> is also able to install some non-Python packages that have Python bindings. For example with mamba we can install <em>jupyter</em>, a web based editor for writing and evaluating code per cell (more on jupyter later). This is useful for making sure your Python and binary versions match and do not interfere with the system-wide ones.</p>
-<p>Some additional helpful utilities for package management in this context are:</p>
-<ul>
-<li><code>mamba list</code> to check which packages are installed in <code>root</code> or in the active environment;</li>
-<li><code>python --version</code> or <code>gdal-config --version</code> to check which Python or GDAL version is used in the environment;</li>
-</ul>
-<p>Removing packages is just as simple:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> remove geopandas pandas folium</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Now, we deactivate the environment and return to base environment.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> init example</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="running-a-python-script-in-the-terminal" class="level2">
-<h2 class="anchored" data-anchor-id="running-a-python-script-in-the-terminal">Running a Python script in the terminal</h2>
-<p>Within a conda environment, Python can be started directly, or can be called to run a script file. To start Python directly:</p>
+<section id="using-pixi" class="level2">
+<h2 class="anchored" data-anchor-id="using-pixi">Using pixi</h2>
+<p>After running this, a directory should be created with the name of the project that we can change into using <code>cd</code>. When listing the files (<code>ls -a</code>), 3 files should be present: <code>.gitattributes</code>, <code>.gitignore</code>, and <code>pixi.toml</code>. The contents of <code>pixi.toml</code> look like this:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode toml code-with-copy"><code class="sourceCode toml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[workspace]</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">authors</span> <span class="op">=</span> <span class="op">[</span><span class="st">"Arno Timmer &lt;arno.timmer@wur.nl&gt;"</span><span class="op">]</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">channels</span> <span class="op">=</span> <span class="op">[</span><span class="st">"conda-forge"</span><span class="op">]</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="dt">name</span> <span class="op">=</span> <span class="st">"example"</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dt">platforms</span> <span class="op">=</span> <span class="op">[</span><span class="st">"linux-64"</span><span class="op">]</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="dt">version</span> <span class="op">=</span> <span class="st">"0.1.0"</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="kw">[tasks]</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="kw">[dependencies]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Now, you can type Python expressions that will be executed one by one:</p>
+<p>The <strong>workspace</strong> defines the metadata and properties for the project, <strong>Tasks</strong> can be used to configure tasks, allowing you to for example pass environment variables and running different parts of scripts easily, (we will not use this during this course, but loook at the <a href="https://pixi.prefix.dev/latest/workspace/advanced_tasks/">pixi documentation</a> for more information), and <strong>dependencies</strong> defines the packages dependencies. It can list channels to define from which <a href="https://conda.org/learn/faq/#what-is-a-conda-channel">conda channel</a> the packages are installed.</p>
+<p>Now we have an empty pixi project, let’s add some packages to it. We have entered the python week, so lets add python as a dependency. Since Pixi can use a large variety of software, we have to be specific, and install python as first thing. Installing a pyc</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Good morning, you are running Python version: </span><span class="sc">{</span>sys<span class="sc">.</span>version<span class="sc">}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add python</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> pixi.toml</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>To go back, type:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exit()</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or </span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">quit()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode toml code-with-copy"><code class="sourceCode toml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[workspace]</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dt">channels</span> <span class="op">=</span> <span class="op">[</span><span class="st">"conda-forge"</span><span class="op">]</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="dt">name</span> <span class="op">=</span> <span class="st">"example"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># This will be whatever your machine's platform is</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="dt">platforms</span> <span class="op">=</span> <span class="op">[</span><span class="st">"linux-64"</span><span class="op">]</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="dt">version</span> <span class="op">=</span> <span class="st">"0.1.0"</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="kw">[tasks]</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="kw">[dependencies]</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="dt">python</span> <span class="op">=</span> <span class="st">"&gt;=3.14.6,&lt;3.15"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Usually, we do not want to run expressions one by one, but build scripts instead, to ensure transferability and reproducibilty. Create a new text file and (re)name it (to) <code>test.py</code>. Open it, for example with a text editor, paste in the code you used above (<code>import sys</code> etc.), and save the script. Navigate in the terminal to the location where this script is stored, using <code>cd</code>. Finally, run the script with:</p>
+<p>If we check your project folders contents, we also see a <code>pixi.lock</code> file that has been created, together with a <code>.pixi</code> directory. After solving the environment as defined in your <code>.toml</code> file, the environment gets solved and the exact set of packages with their versions is stored in the lock file. The lock file is meant for easy recreation of the environment that was used, <strong>do not manually make changes in this file!</strong>. Updating your environment, installing packages for example, goes by adding them to the toml file or adding them through the commandline.</p>
+<p>The environment is stored in the <code>.pixi</code> directory. Each project you use pixi in gets this directory and it contains all the files that the packages need, so with a lot of packages this directory gets quite big! Do not push this to git! By initializing a pixi project, the <code>.gitignore</code> that gets created will make sure that this directory does not get tracked by git.</p>
+<p>Let’s add and use a package to the example environment. Use the following command:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> test.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add cowpy <span class="at">--pypi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>The output is printed to the terminal. Running a script from the terminal is less error-prone than running it from an IDE (see the next section), such as Spyder or Visual Studio Code, as IDEs often keep variables in memory after the script has finished running. Therefore, running a script from the terminal is a good final test before submitting an exercise or assignment.</p>
+<p>Now create a new python file <code>cow.py</code> containing the following code:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> cowpy.cow <span class="im">import</span> Cowacter</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>message <span class="op">=</span> Cowacter().milk(<span class="st">"Hello, my dear Geoscripter!"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(message)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>We can run the file using:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run python cow.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Pixi will solve the depencies, create the environment (if it did not exist yet) and run the file. (It gives a SyntaxWarning only the first time this runs: @ is an invalid escape sequence, which will not work in the future).</p>
+<p>Another way of running files is to enter a pixi shell and run the script from there. You can start the pixi shell using:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> shell</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This will show the name of your environment in brackets before your curent working directory. When an environment is activated you can run a script using the command that you would normally use to run that command, but it will use the executables from the environment if existing. So:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> cow.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>If you want to remove a package from the environment, you can do that by simply removing it from the toml file. After running <code>pixi run</code> a new environment will be created (Pixi can spot the differences with the <code>pixi.lock</code> file) and the package will be removed.</p>
+</section>
+<section id="collaborating-with-others" class="level2">
+<h2 class="anchored" data-anchor-id="collaborating-with-others">Collaborating with others</h2>
+<p>When you are collaborating with others, or want to make your project available to other people on the internet, you need to specify what dependencies your project depend on. We already mentioned that using an environment makes this easy and doable. Adding your <code>pixi.toml</code> to your repository makes it possible to others to create a pixi environment from that definition.</p>
+<p>When a toml is available, you can run <code>pixi init</code> and pixi will find that toml and create an environment from the dependencies as listed in the file. In the same way, you can create the same environment as the code from your colleague.</p>
+<p>It might happen that you want to use a project that is not using pixi (yet). Since pixi is built upon conda and pip, it supports importing dependencies from those. These dependencies are usually defined in an environment.yml or env.yml (or .yaml) for conda, and requirements.txt for pip. We can import these using <code>pixi import</code>. In this course we used to define environments using an env.yml, so you might run into one of those that was supposed to be converted… You can create your pixi environment using:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> init <span class="at">--import</span> env.yml</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Pixi will then create a <code>pixi.toml</code> from that, and the environment belonging to that <code>pixi.toml</code>.</p>
 </section>
 </section>
 <section id="python-editors-and-ides" class="level1">
 <h1>Python editors and IDEs</h1>
 <p>There are many Integrated Development Environments (IDEs) for Python, and every programmer has their own preference. An IDE is a software application that provides facilities for software development. There are roughly two ways in which python developers are working with python.</p>
 <ol type="1">
-<li>Writing scripts and mainly working with out of the box functionality from packages in notebooks. In this way you might explore some data or do remote analysis that requires a lot of computing resources. Jupyter Notebooks and Jupyter Labs is developed for this purpose.
+<li><p>Writing python code for larger projects, requiring functions, multiple modules and multiple files. For larger projects, some additional tooling is very helpful. IDE’s come with tooling to support git, debugging, autocompletion and GenAI. In these IDE’s, in contrast to Rstudio, code is run per file instead of line by line or cell by cell as in notebooks. A file might import other files and so on. This might need some getting used to but the debugger is there to help you and inspect how the interpreter is reading your code. Two IDE’s that are good to know:</p>
+<ul>
+<li><p><a href="https://github.com/posit-dev/positron">Positron</a>: A next-generation data science IDE built by Posit PBC (the people behind RStudio). It’s a VScode clone, but made specifically to work for python and R with a better git integration, AI integration and the possibility of using plugins, while keeping the Rstudio features (line by line running, variable viewer… and more). <em>In this course, Positron is the recommended Python IDE, it is pre-installed. in the Linux VM, and we will go into detail in the next section of this tutorial.</em></p></li>
+<li><p><a href="https://code.visualstudio.com/">Visual Studio Code</a>: Visual Studio Code (VSCode) is a very complete IDE. It can be used to develop software in almost all languages and it has a lost of advanced functionality. VSCode is developed by Microsoft, but it is built upon an open source distribution and numerous packages exist that are open source, for example Python functionality.</p></li>
+<li><p><a href="https://www.jetbrains.com/help/pycharm/install-and-set-up-pycharm.html">PyCharm Community Edition</a> is a free professional Python IDE with a lot of advanced functionality, such as integrated GIT version control, code completion, code checking, debugging and navigation. This IDE can optionally be used as an alternative to Positron. If you have experience, you can use Pycharm instead of Positron, but do know that you will not be assisted for solving IDE-related issues.</p></li>
+</ul></li>
+<li><p>Writing scripts and mainly working with out of the box functionality from packages in notebooks. In this way you might explore some data or do remote analysis that requires a lot of computing resources. Jupyter Notebooks and Jupyter Labs is developed for this purpose.</p>
 <ul>
 <li><a href="http://jupyter.org/">Jupyter notebook</a> integrates visualization with code and is suitable for making tutorials, dashboards, data exploration, do prototype testing or run largely predefined functionality. It is not suited to do develop large projects in. Jupyter Notebook runs in a browser on a localhost server or on a web server, for example remotely on a cluster or on <a href="https://colab.research.google.com/">Google cloud</a>. In Jupyter you mix text (documentation or explanation) with code and images (plots for example). Jupyter is cell-based, meaning that code is run per cell. The variables and objects are stored in memory across cells. Since Jupyter saves the state, including the output of a cell, it does not work very well with git. Additional tools are needed for colaborating and making sure that the output from one used does not interfere with another user’s output, even if it is the same output.</li>
 </ul></li>
-<li>Writing python code for larger projects, requiring functions, multiple modules and multiple files. For larger projects, some additional tooling is very helpful. IDE’s come with tooling to support git, debugging, autocompletion and GenAI. In these IDE’s, in contrast to Rstudio, code is run per file instead of line by line or cell by cell as in notebooks. A file might import other files and so on. This might need some getting used to but the debugger is there to help you and inspect how the interpreter is reading your code. Two IDE’s that are good to know:
-<ul>
-<li><a href="https://code.visualstudio.com/">Visual Studio Code</a>: Visual Studio Code (VSCode) is a very complete IDE. It can be used to develop software in almost all languages and it has a lost of advanced functionality. VSCode is developed by Microsoft, but it is built upon an open source distribution and numerous packages exist that are open source, for example Python functionality. <em>In this course, VSCode is the recommended Python IDE, it is pre-installed. in the Linux VM.</em></li>
-<li><a href="https://www.jetbrains.com/help/pycharm/install-and-set-up-pycharm.html">PyCharm Community Edition</a> is a free professional Python IDE with a lot of advanced functionality, such as integrated GIT version control, code completion, code checking, debugging and navigation. This IDE can optionally be used as an alternative to VSCode. If you have experience, you can use Pycharm instead of VSCode, but do know that you will not be assisted for solving IDE-related issues.</li>
-</ul></li>
 </ol>
 <p>Lastly, an IDE that is good to mention is <a href="https://www.spyder-ide.org/">Spyder</a>. Spyder is a lightweight IDE, it is similar to Rstudio.</p>
-<section id="visual-studio-code" class="level2">
-<h2 class="anchored" data-anchor-id="visual-studio-code">Visual Studio Code</h2>
-<p>Visual studio code is a complete IDE that is used by many developers, Python developers but also developers for other languages. To get started in VSCode we will set up a basic project structure and run some very basic code. There is a difference opening a file and opening a project in VSCode. Opening a file will let you edit that file and possibly run it. Opening a directory or a project consisting of multiple (sub)directories will let you set a default interpreter, search and replace throughout the project and navigate to function imports and many more advantages. We recommend you to generally use a seperate project for each tutorial, exercise and assignment. In that way you can use dedicated environments and keep a coherent folder structure throughout the course.</p>
-<p>Create the following files:</p>
-<pre><code>  MyPackage/
-  ├── environment.yaml
-  ├── main.py
-  └── MyPackage
-      └── __init__.py</code></pre>
-<p><img src="images/vscode/empty-vscode.png" alt="VSCode when you open it for the first time" width="100%"></p>
-<p>Create an empty directory <code>MyPackage</code> and open it using the button that shows in the main screen when you open VSCode. Create the files as the file tree shows above. Open <code>main.py</code>, and write the following code:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'hello world'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="positron" class="level2">
+<h2 class="anchored" data-anchor-id="positron">Positron</h2>
+<p>Positron is a complete IDE that is used by many developers, Python developers but also developers for other languages.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/positron/empty_positron.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Positron when you open it for the first time"><img src="images/positron/empty_positron.png" class="img-fluid figure-img" style="width:100.0%" alt="Positron when you open it for the first time"></a></p>
+<figcaption>Positron when you open it for the first time</figcaption>
+</figure>
 </div>
-<p>VSCode directly recognizes the python file extension (.py) and does some suggestions. In the bottom right you can what type of file VSCode thinks you are working in, it also shows a number, most likely 3.12.x if you are following this course in 2025. This number is the python version of the interpreter that is now running, more on this later. In the left there is a column with some buttons. These buttons are, from top to bottom, for:</p>
+<p>To get started in Positron we will set up a basic project structure and run some very basic code. There is a difference between opening a <strong>file</strong> and opening a <strong>project</strong> in Positron. Opening a file will let you edit that file and possibly run it (with the default interpreter). Opening a directory or a project consisting of multiple (sub)directories will let you set a default interpreter, search and replace throughout the project and navigate to function imports and many more advantages. We recommend you to generally use a seperate project for each tutorial, exercise and assignment. In that way you can use dedicated environments and keep a coherent folder structure throughout the course.</p>
+<p>In your Positron terminal, create a new pixi project <code>MyPackage</code>, by running:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pixi init MyPackage</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This line creates a new folder called MyPackage. Open it via Positron (or use ‘cd MyPackage’ in bash). When you are in the directory MyPacakge run</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pixi add python</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Then, create a file <code>main.py</code>. Open <code>main.py</code>, and write the following code:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'hello world'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>You can run the full code by pressing the play button on the top left. Select Run Python File in Terminal (from the drop-down menu next to the play button) to see the output in the Terminal window.</p>
+<p>When you do this, a terminal pops up, showing the output of the file. Although Positron allows you to run python code line by line, in Python code is often run per file. However, you can also run the single lines as we are used to in R by using CTRL+ENTER, and see the output line by line in the Console window.</p>
+<p>Positron directly recognizes the python file extension (.py) and does some suggestions. In the top right you can what type of file Positron thinks you are working in, it also shows a number, most likely 3.14.x if you are following this course in 2026. This number is the python version of the interpreter that is now running, more on this later. In the left there is a column with some buttons. These buttons are, from top to bottom, for:</p>
 <ul>
 <li>Files, showing the project files. Clicking on a file opens it.</li>
 <li>Search, giving the option to searching and replacing text throughout the project</li>
-<li>version control, showing the git status of the project.</li>
+<li>Source control, showing the git status of the project.</li>
 <li>Run and debug, showing results and the state during debugging</li>
 <li>Extensions, for installing and maintaining extensions.</li>
 <li>Testing, for testing code (we will not use this throughout the course)</li>
@@ -361,87 +413,86 @@ dependencies:
 <div class="cell" type="alert alert-danger">
 <div class="alert alert-danger">
 <p>
-<strong>Warning for students taking the course</strong>: VSCode comes with advanced integration of generative AI. It is recommended to not make use of GenAI while learning to code. Struggling through how to get a script working is how you learn, and that is what this course is about. Generating the correct result will not teach you anything.
+<strong>Warning for students taking the course</strong>: Positron comes with advanced integration of generative AI. It is recommended to not make use of GenAI while learning to code. Struggling through how to get a script working is how you learn, and that is what this course is about. Generating the correct result will not teach you anything, it’s like ordering a pizza for a cooking class or taking a taxi for running exercise.
 </p>
 <p>
-It is recommended to turn off automatic features that copilot offers. You can do this by 1. going to File → Preferences → Settings (or press Ctrl+,). 2. In the search bar, type “Copilot”. 3. Find the settings for: GitHub Copilot: Enable (controls code completions) GitHub Copilot Chat: Enable (controls chat/agent features) Uncheck or set these to “false” to disable them globally.
+It is recommended to turn off automatic features that copilot offers. You can do this by 1. going to File → Preferences → Settings (or press Ctrl+,). 2. In the search bar, type “GitHub Copilot”. 3. Find the settings for: GitHub Copilot: Enable (controls code completions)
+</p>
+<p>
+Uncheck or set this to “false” to disable them globally.
 </p>
 </div>
 </div>
-<p>Open the <code>environment.yaml</code> and paste the following in there:</p>
-<pre><code>name: geotest
-dependencies:
-  - python
-  - numpy
-  - folium</code></pre>
-<p><img src="images/vscode/main.py.png" alt="The main.py script" width="100%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/positron/main.py.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="The main.py script"><img src="images/positron/main.py.png" class="img-fluid figure-img" style="width:100.0%" alt="The main.py script"></a></p>
+<figcaption>The main.py script</figcaption>
+</figure>
+</div>
 <section id="extensions" class="level3">
 <h3 class="anchored" data-anchor-id="extensions">Extensions</h3>
-<p>You can run the code by pressing the play button in the top right. When you do this, a terminal pops up, showing the output of the file. As explained before, in VSCode we run code per file instead of per line as we are used to in R. As you can see, already out of the box there is some python functionality that is built into VSCode, but there is more. Open the extensions page, type python and install the extensions <em>Python</em>, <em>Python Debugger</em> and <em>jupyter</em>. These are the extensions that we will use throughout the course, more is not necessary for now, but there is a whole world out there.</p>
-<p><img src="images/vscode/extentions.png" alt="Python extensions in VSCode" width="100%"></p>
-<p>To show you some of this functionality, write the following code in the <code>MyPackage.__init__.py</code>:</p>
+<p>As you can see, already out of the box there is some python functionality that is built into Positron, but there is more. Open the extensions page, and note that the extensions <em>Python</em>, <em>Python Debugger</em> and <em>jupyter</em> were pre-installed for you. These are the extensions that we will use throughout the course, more is not necessary for now, but there is a whole world out there.</p>
+<p>To show you some of this functionality, write the following code in the <code>MyPackage.some_functions.py</code> (create a new python file called <code>some_functions.py</code> in the MyPackage folder and write the following code in it):</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> some_function(a_number):</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'I am printing the number </span><span class="sc">{</span>a_number<span class="sc">}</span><span class="ss">'</span>) <span class="co"># This is is a formatted string</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> some_function(a_number):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'I am printing the number </span><span class="sc">{</span>a_number<span class="sc">}</span><span class="ss">'</span>) <span class="co"># This is is a formatted string</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Now, in the <code>main.py</code> file, run the function.:</p>
+<p>Now, in the <code>main.py</code> file, write the code to run the function.:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>some_function(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>some_function(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>A yellow squiggly line showed up. This means something is wrong with the code. And this is right, if we would run the code python would complain that the function is not known. We forgot to import it, we defined it but did not import it yet. If you stand with your cursor in the function call, and pres <code>ctrl</code> + <code>.</code>, visual code will try to figure out how to solve the issue. In this case it proposes to import it from <code>MyPackage.MyPackage</code>. If you press enter it imports the function. You can now run the function.</p>
+<p>Before running, a red squiggly line showed up. This means something is wrong with the code. And this is right, if we would run the code python would complain that the function is not known. We forgot to import it, we defined it but did not import it yet. If you stand with your cursor in the function call, and pres <code>ctrl</code> + <code>.</code>, Positron will try to figure out how to solve the issue. In this case it proposes to import it from <code>some_functions</code>. If you press enter it imports the function (<code>from some_functions import some_function</code>). You can now run the function.</p>
 <p>If you press <code>ctrl</code> and click on the function in <code>main.py</code> you will open the function definition. This is very useful when navigating through a large project.</p>
 </section>
-<section id="environments-in-vscode" class="level3">
-<h3 class="anchored" data-anchor-id="environments-in-vscode">Environments in VSCode</h3>
-<p>As we mentioned before the numbers in the bottom right show the version of the python interpreter associated with the project. We learned about environments before, so let’s create an environment. VSCode comes with a bash terminal. If you ran some code before this might be open, otherwise click terminal in the top menu (in the same section as <code>File</code> and <code>Edit</code>) or press <code>ctrl</code>+<code>shift</code>+` (use the back tick, most likely on the top left of your keyboard.). Another way to open the terminal is to press <code>Ctrl</code> + <code>Shift</code> + <code>P</code> and type terminal, and click Create New Terminal (With Profile). <code>Ctrl</code> + <code>Shift</code> + <code>P</code> opens the command pallet, and by searching in here you can access almost all functionality from VSCode. It is usually a good start if you are looking for something, just start typing and see if the correct option comes up.</p>
-<p>First we need to set up our environment. Activate the <em>geotest</em> environment if you created it before or create it using the yaml.</p>
+<section id="environments-in-positron" class="level3">
+<h3 class="anchored" data-anchor-id="environments-in-positron">Environments in Positron</h3>
+<p>As we mentioned before the numbers in the top right show the version of the python interpreter associated with the project. We learned about environments before, so let’s create an environment. Positron comes with a bash terminal. If you ran some code before this might be open, otherwise click terminal in the top menu (in the same section as <code>File</code> and <code>Edit</code>) or press <code>ctrl</code>+<code>shift</code>+` (use the back tick, most likely on the top left of your keyboard.). Another way to open the terminal is to press <code>Ctrl</code> + <code>Shift</code> + <code>P</code> and type terminal, and click Create New Terminal (With Profile). <code>Ctrl</code> + <code>Shift</code> + <code>P</code> opens the command pallet, and by searching in here you can access almost all functionality from Positron. It is usually a good start if you are looking for something, just start typing and see if the correct option comes up.</p>
+<p>First we need to set up our environment. We will add new packages to our environment using pixi. In the terminal, type:</p>
+<pre><code>pixi add python numpy folium</code></pre>
+<p>As before, you can either use the pixi command to run the python file from the terminal, or create a shell.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One of the following</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> env create <span class="at">-f</span> environment.yaml</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># or </span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> activate geotest </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One of the following</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> shell</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># You should see the name of your environment in brackets before your curent working directory. </span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">#(MyPackage) osboxes@geoscripting: ~/MyPackage$</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># now you can run</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> main.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>If <code>(geotest)</code> is visible before the active line in the terminal the environment is successfully activated. However, this is something different than associating it to the project, if you run a file this interpreter will still not be used. To do this we are going to use the Command Palette. Click the bar in the top center or press <code>Ctrl</code> + <code>Shift</code> + <code>p</code> to open it. Type <code>&gt;Python: select interpreter</code>. The <code>&gt;</code> sign tells VSCode your are looking for commands. Without you can search files in the project. It auto-completes, so <code>python</code> is enough. Select it. It should already show up. It also gives the option to create a new environment, more on that later.</p>
+<p>If <code>(MyPackage)</code> is visible before the active line in the terminal the environment is successfully activated. However, this is something different than associating it to the project, if you run a file this interpreter will still not be used. To do this we are going to use the Command Palette. Click the bar in the top center or press <code>Ctrl</code> + <code>Shift</code> + <code>p</code> to open it. Type <code>&gt;Python: select interpreter</code>. The <code>&gt;</code> sign tells Positron your are looking for commands. Without you can search files in the project. It auto-completes, so <code>python</code> is enough. Select it. It should already show up. It also gives the option to create a new environment, more on that later.</p>
 </section>
-<section id="debugger-repl" class="level3">
-<h3 class="anchored" data-anchor-id="debugger-repl">Debugger &amp; REPL</h3>
-<section id="debugger" class="level4">
-<h4 class="anchored" data-anchor-id="debugger">Debugger</h4>
-<p>Now, you might wonder how you will write code without being able to inspect what is going on. And don’t be afraid there are ways to help you. The <em>debugger</em> and the interactive <em>REPL</em> <em>(Read-Evaluate-Print Loop)</em> are tools developers use to make developing easier. Firstly the debugger. The debugger is a way of running code where you can set breakpoints and inspect the state of the code and all the variables and objects in memory. While at a checkpoint you can manipulate variables, print them and test small pieces of code on them to figure out how to proceed. From the checkpoint it is possible to proceed line by line, stepping into your function or imported packages to get a good understanding of what is happening and often identifying issues. Sounds good right?</p>
-<p>You start the debugger by instead of clicking on the run arrow, click on the small drop down arrow right next to it and click Python Debugger: Debug Python File. If you didn’t set a break-point the code will run as normal, but the code will take a bit longer to run. The real magic begins if we set a break-point. Click left of the line number next the where the function <code>some function</code> is called in <code>main.py</code> and debug the file again. In the top left, where the run button was before, now some other buttons showed up. These buttons help you navigate through the code: * Continue (<code>F5</code>): continue running the script until either the next break-point or finish running * Step over (<code>F10</code>): Skip this function and continue to the next line * Step into (<code>F11</code>): step into the function * step out (<code>shift</code> + <code>F11</code>): set out of the function (in this case we are not in a function) * Restart (<code>ctrl</code> + <code>shift</code> + <code>F5</code>): Re run the script * Stop (<code>shift</code> + <code>f5</code>): Stop the debugger</p>
-<p><img src="images/vscode/debugger.png" alt="The debugger in VSCode" width="100%"></p>
+<section id="debugger" class="level3">
+<h3 class="anchored" data-anchor-id="debugger">Debugger</h3>
+<p>The <em>debugger</em> is a tool developers use to make developing easier. Firstly the debugger. The debugger is a way of running code where you can set breakpoints and inspect the state of the code and all the variables and objects in memory. While at a checkpoint you can manipulate variables, print them and test small pieces of code on them to figure out how to proceed. From the checkpoint it is possible to proceed line by line, stepping into your function or imported packages to get a good understanding of what is happening and often identifying issues. Sounds good right?</p>
+<p>You start the debugger by clicking on the small drop down arrow right next to the run arrow, and click Python Debugger: Debug Python File. If you didn’t set a break-point the code will run as normal, but the code will take a bit longer to run. The real magic begins if we set a break-point. Click left of the line number next to where the function <code>some function</code> is called in <code>main.py</code> and debug the file again. Now, some other buttons showed up on the top. These buttons help you navigate through the code: * Continue (<code>F5</code>): continue running the script until either the next break-point or finish running * Step over (<code>F10</code>): Skip this function and continue to the next line * Step into (<code>F11</code>): step into the function * step out (<code>shift</code> + <code>F11</code>): set out of the function (in this case we are not in a function) * Restart (<code>ctrl</code> + <code>shift</code> + <code>F5</code>): Re run the script * Stop (<code>shift</code> + <code>f5</code>): Stop the debugger</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/vscode/debugger.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="The debugger in VSCode"><img src="images/vscode/debugger.png" class="img-fluid figure-img" style="width:100.0%" alt="The debugger in VSCode"></a></p>
+<figcaption>The debugger in VSCode</figcaption>
+</figure>
+</div>
 <p>If you step into the function we can find out the real value of the debugger. On the top left panel we can see the local variables, the variables that are known within the function, and the global variables. These are the variables for this module. In the bottom left we can switch to different modules, when clicking on <code>&lt;module&gt;   main.py</code> we can inspect the variables known in the script <code>main.py</code>. It is directly clear how python handles variables, what is known within a function and what is not. Switch to the <code>some_function</code> scope and you can see there is 1 local variable <code>a_number</code> which is the input the the function, 5 in this example. When you will start making use of more advanced objects with properties and methods this variable overview will become more elaborate.</p>
 </section>
-<section id="repl" class="level4">
-<h4 class="anchored" data-anchor-id="repl">REPL</h4>
-<p>Additionally to the debugger, you can play around with code in jupyter style notebooks. You can start the repl by opening the command palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code>) and type <em>repl</em>, and click <em>‘Python: Start Native Python REPL’</em>. A new window will show up, and if you type some python in the cell that says <em>Press Enter to execute</em>, for example <code>print('hello everybody!!')</code>. The code you ran shows up in a cell and the output in the cell below. This is how notebooks work, they contain code per cell and show the results in line.</p>
-<p>Notebooks allow you to show visuals inline as well. For example we can show plots or an interactive map, directly in the notebook. Type the following Python code in the code cell:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> folium</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> folium.Map(location<span class="op">=</span>[<span class="fl">51.9700000</span>, <span class="fl">5.6666700</span>], zoom_start<span class="op">=</span><span class="dv">13</span>)</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>m</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Run the code cell by selecting it and pressing the <em>Run</em> button, or press <em>CTRL + Enter</em> or <em>Shift + Enter</em>. You’ll see a map visualized below your code, similar to the one below. Try to drag the map to play around with it.</p>
-<p><img src="images/WUR_Basic_Folium_Map.png" alt="Wageningen University Basic Folium map" width="100%"></p>
-</section>
-</section>
-<section id="using-git-source-control-in-vs-code" class="level3">
-<h3 class="anchored" data-anchor-id="using-git-source-control-in-vs-code">Using Git source control in VS Code</h3>
-<p>You’ve already learned how to use Git in the terminal from previous courses. In this section, we’ll show you how to use Git directly within <strong>Visual Studio Code (VSCode)</strong>.</p>
-<p>There are two main ways to work with Git in VSCode:</p>
+<section id="using-git-source-control-in-positron" class="level3">
+<h3 class="anchored" data-anchor-id="using-git-source-control-in-positron">Using Git source control in Positron</h3>
+<p>You’ve already learned how to use Git in the terminal from previous courses. In this section, we’ll show you how to use Git directly within <strong>Positron</strong>.</p>
+<p>There are two main ways to work with Git in Positron:</p>
 <ol type="1">
 <li><strong>Use the integrated terminal</strong>, just like you did in earlier exercises.<br>
 </li>
-<li><strong>Use VSCode’s built-in Git interface</strong>, which provides a visual way to interact with Git.</li>
+<li><strong>Use Positron’s built-in Git interface</strong>, which provides a visual way to interact with Git.</li>
 </ol>
 <p>In this tutorial, we will focus more on option 2, as you’re already familiar with the command-line approach.</p>
-<p>Click on the <strong>Source Control</strong> icon (it looks like a branch) in the left sidebar, or press <code>Ctrl + Shift + G</code> to open the Git panel in VSCode.</p>
+<p>Click on the <strong>Source Control</strong> icon (it looks like a branch) in the left sidebar, or press <code>Ctrl + Shift + G</code> to open the Git panel in Positron.</p>
 <p>This interface is especially helpful for beginners who prefer visual feedback or want to avoid typing commands manually — though keep in mind that it may be less efficient than using the terminal.</p>
 <section id="start-from-a-git-repository" class="level4">
 <h4 class="anchored" data-anchor-id="start-from-a-git-repository">Start from a Git Repository</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/vscode_git/git_vscode_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="git in positron"><img src="images/vscode_git/git_vscode_1.png" class="img-fluid figure-img" style="float:right; width:40%; margin: 0 0 1em 1em;" alt="git in positron"></a></p>
+<figcaption>git in positron</figcaption>
+</figure>
+</div>
 <p>The initial state of the <strong>Source Control</strong> panel depends on whether you’ve opened a folder and whether that folder is already a Git repository:</p>
 <ul>
 <li>If <strong>no folder is opened</strong>, you’ll see options to:
@@ -461,10 +512,18 @@ dependencies:
 <li>A <code>GRAPH</code> section showing the Git commit history in visual form</li>
 </ul></li>
 </ul>
-<p><img src="images/vscode_git/git_vscode_1.png" alt="Source Control panel" width="100%"></p>
+<div style="clear:both;">
+
+</div>
 </section>
 <section id="git-status-view-modified-files" class="level4">
 <h4 class="anchored" data-anchor-id="git-status-view-modified-files"><code>git status</code> – View modified files</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/vscode_git/git_vscode_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Source Control panel, files status"><img src="images/vscode_git/git_vscode_2.png" class="img-fluid figure-img" style="float:right; width:40%; margin: 0 0 1em 1em;" alt="Source Control panel, files status"></a></p>
+<figcaption>Source Control panel, files status</figcaption>
+</figure>
+</div>
 <p>Under the <code>Changes</code> section, you’ll see all modified, untracked, or staged files. Each file has a status label:</p>
 <ul>
 <li><code>U</code> – Untracked<br>
@@ -474,39 +533,88 @@ dependencies:
 <li><code>A</code> – Added (staged)</li>
 </ul>
 <p>You can click on any file to view the diff — i.e., what lines have been changed — in a side-by-side comparison.</p>
-<p><img src="images/vscode_git/git_vscode_2.png" alt="Source Control panel, files status" width="100%"></p>
+<div style="clear:both;">
+
+</div>
 </section>
 <section id="git-add-git-reset-stage-or-unstage-files" class="level4">
 <h4 class="anchored" data-anchor-id="git-add-git-reset-stage-or-unstage-files"><code>git add</code> / <code>git reset</code> – stage or unstage Files</h4>
 <p>To <strong>stage</strong> a file (equivalent to <code>git add</code>), hover over it and click the <strong><code>+</code></strong> icon.</p>
 <p>To <strong>unstage</strong> a file (equivalent to <code>git reset HEAD</code>), hover over it again (now in the <strong>Staged Changes</strong> area) and click the <strong><code>-</code></strong> icon.</p>
 <p>This allows you to control which files you want to include in your next commit.</p>
+<div style="clear:both;">
+
+</div>
 </section>
 <section id="git-commit-commit-your-changes" class="level4">
 <h4 class="anchored" data-anchor-id="git-commit-commit-your-changes"><code>git commit</code> – Commit your changes</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/vscode_git/git_vscode_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Source Control panel, commit message"><img src="images/vscode_git/git_vscode_3.png" class="img-fluid figure-img" style="float:right; width:40%; margin: 0 0 1em 1em;" alt="Source Control panel, commit message"></a></p>
+<figcaption>Source Control panel, commit message</figcaption>
+</figure>
+</div>
 <p>Once you’ve staged the desired files, you can commit them:</p>
 <ol type="1">
 <li>Enter a short commit message in the blue bar at the top.</li>
 <li>Click the <strong>✓ (checkmark)</strong> icon to commit.</li>
 </ol>
-<p>VSCode may open a <code>COMMIT_EDITMSG</code> tab for a longer message if needed. You could also fill in the commit message above the commit blue bar. After committing, your changes will appear as a new node in the <code>GRAPH</code> panel, showing a visual update to the repository’s commit history.</p>
-<p><img src="images/vscode_git/git_vscode_3.png" alt="Source Control panel, commit message" width="100%"></p>
+<p>Positron may open a <code>COMMIT_EDITMSG</code> tab for a longer message if needed. You could also fill in the commit message above the commit blue bar. After committing, your changes will appear as a new node in the <code>GRAPH</code> panel, showing a visual update to the repository’s commit history.</p>
+<div style="clear:both;">
+
+</div>
 </section>
 <section id="git-push-push-local-commits-to-remote" class="level4">
 <h4 class="anchored" data-anchor-id="git-push-push-local-commits-to-remote"><code>git push</code> – push local commits to remote</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/vscode_git/git_vscode_5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="git pull"><img src="images/vscode_git/git_vscode_5.png" class="img-fluid figure-img" style="float:right; width:40%; margin: 0 0 1em 1em;" alt="git pull"></a></p>
+<figcaption>git pull</figcaption>
+</figure>
+</div>
 <p>To <strong>push</strong> your local commits to a remote repository (like GitHub), click the <code>...</code> (More Actions) menu in the top-right of the Source Control panel, and then select <strong>Push</strong>.</p>
-<p><img src="images/vscode_git/git_vscode_5.png" alt="Source Control panel, git pull" width="100%"></p>
+<div style="clear:both;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/vscode_git/git_vscode_4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="git push!"><img src="images/vscode_git/git_vscode_4.png" class="img-fluid figure-img" style="float:right; width:40%; margin: 0 0 1em 1em;" alt="git push!"></a></p>
+<figcaption>git push!</figcaption>
+</figure>
+</div>
 <p>Once done, your changes will be reflected in the remote repository.</p>
-<p><img src="images/vscode_git/git_vscode_4.png" alt="Source Control panel, new push shown in GRAPH" width="100%"></p>
+<div style="clear:both;">
+
+</div>
 </section>
 <section id="git-pull-download-and-merge-remote-changes" class="level4">
 <h4 class="anchored" data-anchor-id="git-pull-download-and-merge-remote-changes"><code>git pull</code> – download and Merge Remote Changes</h4>
 <p>To update your local repository with any changes from the remote, open the <code>...</code> menu in the Source Control panel and select <strong>Pull</strong>.</p>
-<p>In this section, we demonstrate how VS Code handles <em>artificially created conflicts</em> (i.e., when the local and remote branches diverge). You don’t need to follow along step-by-step — just observe how it works in the interface. In <code>GRAPH</code>, the divergent branches will be shown quite intuitively:</p>
-<p><img src="images/vscode_git/git_vscode_7_merge.png" alt="Source Control panel, divergent branches" width="100%"></p>
-<p>If someone else (or you, on another machine) has pushed changes to the remote, pulling will fetch those changes and attempt to merge them into your current branch. However, if your local branch has diverged from the remote, Git requires a strategy to reconcile them — either by <strong>merging</strong> or <strong>rebasing</strong>. Unlike the terminal, <strong>VS Code does not prompt you explicitly</strong> when this happens. Instead, the pull will fail until you configure your preferred reconciliation strategy. You can set this using the terminal inside VS Code <code>git config --global pull.rebase false</code>. After configuring, subsequent pulls will proceed smoothly.</p>
-<p>VS Code provides a <strong>3-way merge editor</strong> to help resolve them visually. Files with conflicts will show a <strong>Resolve in Merge Editor</strong> button at the bottom right — click it to open the editor.</p>
-<p><img src="images/vscode_git/git_vscode_8_merge.editor.png" alt="Source Control panel, conflicts in two branches" width="100%"></p>
+<p>In this section, we demonstrate how Positron handles <em>artificially created conflicts</em> (i.e., when the local and remote branches diverge). You don’t need to follow along step-by-step — just observe how it works in the interface. In <code>GRAPH</code>, the divergent branches will be shown quite intuitively:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/vscode_git/git_vscode_7_merge.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Diverging branches"><img src="images/vscode_git/git_vscode_7_merge.png" class="img-fluid figure-img" style="float:right; width:40%; margin: 0 0 1em 1em;" alt="Diverging branches"></a></p>
+<figcaption>Diverging branches</figcaption>
+</figure>
+</div>
+<div class="centered">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/vscode_git/git_vscode_8_merge.editor.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Source Control panel, conflicts in two branches"><img src="images/vscode_git/git_vscode_8_merge.editor.png" class="img-fluid figure-img" style="width:50.0%" alt="Source Control panel, conflicts in two branches"></a></p>
+<figcaption>Source Control panel, conflicts in two branches</figcaption>
+</figure>
+</div>
+</div>
+<p>If someone else (or you, on another machine) has pushed changes to the remote, pulling will fetch those changes and attempt to merge them into your current branch. However, if your local branch has diverged from the remote, Git requires a strategy to reconcile them — either by <strong>merging</strong> or <strong>rebasing</strong>. Unlike the terminal, <strong>Positron does not prompt you explicitly</strong> when this happens. Instead, the pull will fail until you configure your preferred reconciliation strategy. You can set this using the terminal inside Positron <code>git config --global pull.rebase false</code>. After configuring, subsequent pulls will proceed smoothly.</p>
+<p>Positron provides a <strong>3-way merge editor</strong> to help resolve them visually. Files with conflicts will show a <strong>Resolve in Merge Editor</strong> button at the bottom right — click it to open the editor.</p>
+<div class="centered">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/vscode_git/git_vscode_9_merge.editor2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Source Control panel, 3 way merge editor"><img src="images/vscode_git/git_vscode_9_merge.editor2.png" class="img-fluid figure-img" style="width:50.0%" alt="Source Control panel, 3 way merge editor"></a></p>
+<figcaption>Source Control panel, 3 way merge editor</figcaption>
+</figure>
+</div>
+</div>
 <p>The 3-way merge editor displays:</p>
 <ul>
 <li>Incoming changes (from remote, left side)</li>
@@ -514,34 +622,35 @@ dependencies:
 <li>Result (the merged version, bottom)</li>
 </ul>
 <p>You can click buttons above each section to choose whether to accept incoming, current, or both changes.</p>
-<p><img src="images/vscode_git/git_vscode_9_merge.editor2.png" alt="Source Control panel, 3 way merge editor" width="100%"></p>
 <p>After resolving all conflicts and completing the merge, you’ll see the branches merged back together in the <code>GRAPH</code> panel:</p>
-<p><img src="images/vscode_git/git_vscode_10_one.branch.again.png" alt="Source Control panel, merged into one branch" width="100%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/vscode_git/git_vscode_10_one.branch.again.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Source Control panel, merged into one branch"><img src="images/vscode_git/git_vscode_10_one.branch.again.png" class="img-fluid figure-img" style="float:right; width:40%; margin: 0 0 1em 1em;" alt="Source Control panel, merged into one branch"></a></p>
+<figcaption>Source Control panel, merged into one branch</figcaption>
+</figure>
+</div>
 </section>
 <section id="more" class="level4">
 <h4 class="anchored" data-anchor-id="more">More!</h4>
-<p>The Git operations we covered here are just the basics. VS Code offers many more features through its Source Control panel — from viewing diffs, to switching branches, to managing stashes.</p>
+<p>The Git operations we covered here are just the basics. Positron offers many more features through its Source Control panel — from viewing diffs, to switching branches, to managing stashes.</p>
 <p>To go further, check out the <a href="https://code.visualstudio.com/docs/sourcecontrol/overview#_source-control-graph">tutorial</a> on using Source Control panel.</p>
 </section>
 </section>
 <section id="extra-material" class="level3">
 <h3 class="anchored" data-anchor-id="extra-material">Extra material</h3>
-<p>The functionality we showed now only touch a very small tip of the iceberg of all that VSCode has to offer, but it is enough to follow the course and start writing some python code. If you want to explore more, below are some resources to get you started. It is easy to complicate the IDE a lot, it is recommended to start with some basics and only start adding more when you are comfortable with the basics.</p>
+<p>The functionality we showed now only touch a very small tip of the iceberg of all that Positron has to offer, but it is enough to follow the course and start writing some python code. If you want to explore more, below are some resources to get you started. It is easy to complicate the IDE a lot, it is recommended to start with some basics and only start adding more when you are comfortable with the basics.</p>
 <ul>
-<li><a href="https://code.visualstudio.com/docs/python/python-tutorial">Official VSCode documentation</a></li>
-<li><a href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf">Cheat sheet with keyboard shortcuts</a></li>
+<li><a href="https://positron.posit.co/">Official Positron documentation</a></li>
+<li><a href="https://positron.posit.co/keyboard-shortcuts.html">Cheat sheet with keyboard shortcuts</a></li>
 <li><a href="https://www.youtube.com/watch?v=lwN4-W1WR84">A cool interactive python feature</a></li>
 </ul>
 </section>
 </section>
-<section id="different-ways-to-run-notebooks" class="level2">
-<h2 class="anchored" data-anchor-id="different-ways-to-run-notebooks">Different ways to run notebooks</h2>
-<p>We have seen how we can use notebooks in the REPL, but there are different ways and this is the power of notebooks. Originally, notebooks were introduced by Jupyter.</p>
-<section id="jupyter-notebook" class="level3">
-<h3 class="anchored" data-anchor-id="jupyter-notebook">Jupyter Notebook</h3>
+<section id="jupyter-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="jupyter-notebook">Jupyter Notebook</h2>
 <p>Jupyter Notebook is actually not a IDE but it is very useful for writing code. Jupyter stands for the languages that once can use (<em>JU</em>lia, <em>PY</em>thon and <em>R</em>) and notebooks means that they are actually files instead of an IDE (such as Rstudio or Spyder). The notebooks can be interpreted and run by varying interpreters of which we will cover two later on. Jupyter Notebook integrates code and visualization, and are therefore very helpful for demonstration purposes and to be run by online interpreters (such as Google Colab). First we will show how to run Jupyter Notebook locally. To do this install <code>jupyter</code> and the module <code>folium</code> in an existing or new environment that includes Python. To start Jupyter type in the terminal:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> notebook</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> notebook</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Jupyter should pop up in your browser. Note that although jupyter is opened in your browser, internet is not used, the code is interpreted and run locally. You will see a menu with all files in your working directory. The Jupyter Notebook will only see files that are accessible from the working directory in which you launched the notebook!</p>
 <p>Make a new folder: <em>New</em> → <em>Folder</em>, rename the folder (check the box next to the new ‘Untitled Folder’ and click <strong>‘Rename’</strong> in the top) and, in this folder, create a new Python3 Jupyter Notebook <em>New</em> → <em>Python 3</em>. Give your notebook a name by clicking on <em>untitled</em>. Note that this creates a file with the extension <em>.ipynb</em>, short for ‘Interactive Python Notebook’, which is the file format of Jupyter Notebook.</p>
@@ -552,7 +661,6 @@ dependencies:
 <li><em>Run</em></li>
 <li><em>Code/Markdown/Heading</em> (List box)</li>
 </ul>
-</section>
 <section id="google-colab" class="level3">
 <h3 class="anchored" data-anchor-id="google-colab">Google Colab</h3>
 <p>As said before, Jupyter is locally opened in your browser. It does not connect to the internet, but it does show the possibilities, one could create something online that can run your notebooks for you on the cloud. This is exactly what Google does with Google Colab. Google Colab is a cloud service that allows you to run your Jupyter notebooks on the Google cloud for free. Let’s see what this looks like:</p>
@@ -563,53 +671,31 @@ dependencies:
 </ul>
 <p>For this course we will rarely use Jupyter Notebook and or Google Colab, but it is good to know they exist. Especially Google Colab is being used more and more in the scientific community and you are likely to come across these during other courses.</p>
 </section>
-<section id="spyder" class="level3">
-<h3 class="anchored" data-anchor-id="spyder">Spyder</h3>
-<p>Spyder is a IDE for developing python mainly for scientific purposes. Fun fact, it is <a href="https://github.com/spyder-ide/spyder">completely written in python</a>! Spyder is a very complete IDE that looks a bit like Rstudio. It shows the variables present in the current session, it has a code editor, a console and a figures pane in the main view.</p>
-<p>The <a href="https://docs.spyder-ide.org/">Spyder IDE</a> can be started in a terminal when the <em>Spyder</em> package is installed in the active conda environment. So, using <em>Mamba</em>, make an environment and install Spyder to that environment. Activate the environment. Spyder will automatically make use of the Python interpreter of the active conda environment. To start Spyder:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">spyder</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>In Spyder you should see an editor, a file explorer and a console. Have a look at the toolbar. Some important shortcuts are:</p>
-<ul>
-<li>F5 to run your script</li>
-<li>CTRL + S to save your script</li>
-<li>CTRL + 1 to comment/uncomment your code</li>
-<li>TAB to indent your code</li>
-<li>SHIFT + TAB to unindent your code</li>
-</ul>
-<p>Open a new file and save it somewhere as <code>main.py</code> (File – &gt; New File –&gt; Save As). Test writing a few lines of code and running the script.</p>
-</section>
 </section>
 </section>
 <section id="putting-it-to-the-test" class="level1">
 <h1>Putting it to the test</h1>
 <section id="setting-up-the-environment" class="level2">
 <h2 class="anchored" data-anchor-id="setting-up-the-environment">Setting up the environment</h2>
-<p>Now that we know how to set up an environment and run code, lets use this new knowledge and run some Python code. Again, during this course advise you to code in VSCode, as this IDE is the recommended IDE for the Python part of this course.</p>
+<p>Now that we know how to set up an environment and run code, lets use this new knowledge and run some Python code. Again, during this course advise you to code in Positron, as this IDE is the recommended IDE for the Python part of this course.</p>
 <p>Create a directory structure for this tutorial using the terminal:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Documents/</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> PythonRefresher <span class="co">#or give the directory a name to your liking</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ./PythonRefresher</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> output</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Documents/</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> init PythonRefresher <span class="co">#or give the directory a name to your liking</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ./PythonRefresher</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> output</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>And open it with VSCode by clicking <em>File</em> and <em>Open Folder</em>.</p>
-<p>We only made a directory for output, because no input data or separate scripts are created in this tutorial. Next, we will create a conda environment from a file. First create a text file, (re)name it (to) <code>refresher.yaml</code>, and copy the following content into the file:</p>
-<pre><code>name: refresher
-dependencies:
-  - python
+<p>And open it with Positron by clicking <em>File</em> and <em>Open Folder</em>.</p>
+<p>We only made a directory for output, because no input data or separate scripts are created in this tutorial. Next, we will add the following packages to the pixi environment:</p>
+<pre><code>  - python
   - numpy
   - matplotlib
-  - geopandas
-  - spyder</code></pre>
-<p>Now, create a new conda environment based on this file. You can do this in a ubuntu terminal, or a terminal in VSCode. To open the terminal in VSCode press <code>Ctrl</code> + <code>shift</code> + <code>P</code> and type terminal and select <em>Create New Terminal (With Profile)</em></p>
+  - geopandas</code></pre>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> env create <span class="at">--file</span> refresher.yaml</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add python numpy matplotlib geopandas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Once everything is installed, associate the refresher environment to this project. The easiest way is press <code>Ctrl</code> + <code>shift</code> + <code>P</code> and type <em>Python: select interpreter</em>.</p>
+<p>Once everything is installed, associate the pixi environment to this project. The easiest way is press <code>Ctrl</code> + <code>shift</code> + <code>P</code> and type <em>Python: select interpreter</em>.</p>
 <p>Create a new Python script and save it.</p>
-<p>Important to note: for compatibility, it is best to install packages from the same channel as much as possible. Given that packages in the file <code>refresher.yaml</code> are installed from the <code>conda-forge</code> channel, it is wise to use this same channel when you want to install additional packages in your environment.</p>
 </section>
 <section id="quick-refresher" class="level2">
 <h2 class="anchored" data-anchor-id="quick-refresher">Quick refresher</h2>
@@ -619,227 +705,227 @@ dependencies:
 <p>In Python we assign variable using the equals sign (<code>=</code>):</p>
 <p>Printing in Python is done using the <code>print</code> function. We can print variables directly:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Integer</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="dv">25</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Float</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>height <span class="op">=</span> <span class="fl">1.75</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># String</span></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">"John Doe"</span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Boolean</span></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>is_student <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Print a name</span></span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Integer</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="dv">25</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Float</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>height <span class="op">=</span> <span class="fl">1.75</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># String</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">"John Doe"</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Boolean</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>is_student <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Print a name</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can use string formatting to use flexible strings, for example for printing. to start a formatted string, we put a <code>f</code> before the string. We can use curly brackets <code>{}</code> in this formatted string. The text between these curly brackets is executed as regular Python code.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># String formatting and printing </span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> is </span><span class="sc">{</span>age<span class="sc">}</span><span class="ss"> years old and is </span><span class="sc">{</span>height<span class="sc">}</span><span class="ss"> meters tall.'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># String formatting and printing </span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> is </span><span class="sc">{</span>age<span class="sc">}</span><span class="ss"> years old and is </span><span class="sc">{</span>height<span class="sc">}</span><span class="ss"> meters tall.'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="basic-arithmetic-operations" class="level3">
 <h3 class="anchored" data-anchor-id="basic-arithmetic-operations">Basic arithmetic operations:</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>addition <span class="op">=</span> a <span class="op">+</span> b</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>subtraction <span class="op">=</span> a <span class="op">-</span> b</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>multiplication <span class="op">=</span> a <span class="op">*</span> b</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>division <span class="op">=</span> a <span class="op">/</span> b</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>modulo <span class="op">=</span> a <span class="op">%</span> b</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>exponentiation <span class="op">=</span> a <span class="op">**</span> b</span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(addition, subtraction, multiplication, division, modulo, exponentiation)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>addition <span class="op">=</span> a <span class="op">+</span> b</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>subtraction <span class="op">=</span> a <span class="op">-</span> b</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>multiplication <span class="op">=</span> a <span class="op">*</span> b</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>division <span class="op">=</span> a <span class="op">/</span> b</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>modulo <span class="op">=</span> a <span class="op">%</span> b</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>exponentiation <span class="op">=</span> a <span class="op">**</span> b</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(addition, subtraction, multiplication, division, modulo, exponentiation)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="conditional-statements" class="level3">
 <h3 class="anchored" data-anchor-id="conditional-statements">Conditional statements</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">15</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">10</span>:</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x is greater than 10"</span>)</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> x <span class="op">==</span> <span class="dv">10</span>:</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x is equal to 10"</span>)</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x is less than 10"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">10</span>:</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x is greater than 10"</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> x <span class="op">==</span> <span class="dv">10</span>:</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x is equal to 10"</span>)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x is less than 10"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="loops-for-and-while" class="level3">
 <h3 class="anchored" data-anchor-id="loops-for-and-while">Loops (for and while)</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For loop</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co"># While loop</span></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> count <span class="op">&lt;</span> <span class="dv">5</span>:</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(count)</span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    count <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For loop</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co"># While loop</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> count <span class="op">&lt;</span> <span class="dv">5</span>:</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(count)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    count <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="lists-and-basic-list-operations" class="level3">
 <h3 class="anchored" data-anchor-id="lists-and-basic-list-operations">Lists and basic list operations</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a list</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>fruits <span class="op">=</span> [<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"orange"</span>]</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing elements</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fruits[<span class="dv">0</span>])  <span class="co"># Output: "apple"</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding elements</span></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>fruits.append(<span class="st">"grape"</span>)</span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing elements</span></span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>fruits.remove(<span class="st">"banana"</span>)</span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Length of the list</span></span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(fruits))  <span class="co"># Output: 3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a list</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>fruits <span class="op">=</span> [<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"orange"</span>]</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing elements</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fruits[<span class="dv">0</span>])  <span class="co"># Output: "apple"</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding elements</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>fruits.append(<span class="st">"grape"</span>)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing elements</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>fruits.remove(<span class="st">"banana"</span>)</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Length of the list</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(fruits))  <span class="co"># Output: 3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="functions" class="level3">
 <h3 class="anchored" data-anchor-id="functions">Functions</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to add two numbers and return the result</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_numbers(a, b):</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> add_numbers(<span class="dv">5</span>, <span class="dv">3</span>)</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)  <span class="co"># Output: 8</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to add two numbers and return the result</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_numbers(a, b):</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> add_numbers(<span class="dv">5</span>, <span class="dv">3</span>)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)  <span class="co"># Output: 8</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Functions can be used to automate tedious tasks that you do often. Some examples would be creating directories if they don’t exist, or downloading and unzipping files. For example:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_directory(directory_name):</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if directory already exists</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(directory_name):</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>        os.mkdir(directory_name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_directory(directory_name):</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if directory already exists</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(directory_name):</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>        os.mkdir(directory_name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> zipfile</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> download_and_unzip(url: <span class="bu">str</span>, extract_to: <span class="bu">str</span> <span class="op">=</span> <span class="st">"."</span>):</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Downloads a ZIP file from a URL and extracts it.</span></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="co">    This function was written by ChatGPT and edited and checked for correctness by Arno Timmer</span></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="co">        url (str): The URL to the ZIP file.</span></span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="co">        extract_to (str): Directory where the files will be extracted.</span></span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get filename from URL</span></span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>    local_zip_path <span class="op">=</span> os.path.join(extract_to, url.split(<span class="st">"/"</span>)[<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Download the file</span></span>
-<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> requests.get(url)</span>
-<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>    response.raise_for_status()</span>
-<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(local_zip_path, <span class="st">"wb"</span>) <span class="im">as</span> f:</span>
-<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>        f.write(response.content)</span>
-<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract the zip file</span></span>
-<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> zipfile.ZipFile(local_zip_path, <span class="st">"r"</span>) <span class="im">as</span> zip_ref:</span>
-<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>        zip_ref.extractall(extract_to)</span>
-<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># remove the zip file</span></span>
-<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a>    os.remove(local_zip_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> zipfile</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> download_and_unzip(url: <span class="bu">str</span>, extract_to: <span class="bu">str</span> <span class="op">=</span> <span class="st">"."</span>):</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Downloads a ZIP file from a URL and extracts it.</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co">    This function was written by ChatGPT and edited and checked for correctness by Arno Timmer</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="co">        url (str): The URL to the ZIP file.</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="co">        extract_to (str): Directory where the files will be extracted.</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get filename from URL</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>    local_zip_path <span class="op">=</span> os.path.join(extract_to, url.split(<span class="st">"/"</span>)[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Download the file</span></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> requests.get(url)</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>    response.raise_for_status()</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(local_zip_path, <span class="st">"wb"</span>) <span class="im">as</span> f:</span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>        f.write(response.content)</span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract the zip file</span></span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> zipfile.ZipFile(local_zip_path, <span class="st">"r"</span>) <span class="im">as</span> zip_ref:</span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>        zip_ref.extractall(extract_to)</span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># remove the zip file</span></span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>    os.remove(local_zip_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>As you can see functions don’t need to return something, but can also return multiple things. If they do, be careful to also store the returned values in multiple variables! If not, they are stored as a tuple.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> multiply_value(a):</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">''' </span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co">    This function multiplies value a with 100 and with 1000. It returns both the results.</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    hundredfold <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> a </span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    thousandfold <span class="op">=</span> <span class="dv">1000</span> <span class="op">*</span> a</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> hundredfold, thousandfold</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co"># When called like this both values are stored as a tuple</span></span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> multiply_value(<span class="dv">5</span>)</span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(results))</span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'We calculated the hundredfold of a number: </span><span class="sc">{</span>results[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> and the thousandfold: </span><span class="sc">{</span>results[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">'</span> )</span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="co"># But we can also call it like this:</span></span>
-<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>hundreds, thousands <span class="op">=</span> multiply_value(<span class="dv">10</span>)</span>
-<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'We calculated the hundredfold of a number: </span><span class="sc">{</span>hundreds<span class="sc">}</span><span class="ss"> and the thousandfold: </span><span class="sc">{</span>thousands<span class="sc">}</span><span class="ss">'</span> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> multiply_value(a):</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">''' </span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co">    This function multiplies value a with 100 and with 1000. It returns both the results.</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    hundredfold <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> a </span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    thousandfold <span class="op">=</span> <span class="dv">1000</span> <span class="op">*</span> a</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> hundredfold, thousandfold</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="co"># When called like this both values are stored as a tuple</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> multiply_value(<span class="dv">5</span>)</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(results))</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'We calculated the hundredfold of a number: </span><span class="sc">{</span>results[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> and the thousandfold: </span><span class="sc">{</span>results[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">'</span> )</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="co"># But we can also call it like this:</span></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>hundreds, thousands <span class="op">=</span> multiply_value(<span class="dv">10</span>)</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'We calculated the hundredfold of a number: </span><span class="sc">{</span>hundreds<span class="sc">}</span><span class="ss"> and the thousandfold: </span><span class="sc">{</span>thousands<span class="sc">}</span><span class="ss">'</span> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="dictionaries" class="level3">
 <h3 class="anchored" data-anchor-id="dictionaries">Dictionaries</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a dictionary</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>person <span class="op">=</span> {</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"name"</span>: <span class="st">"Alice"</span>,</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"age"</span>: <span class="dv">30</span>,</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"is_student"</span>: <span class="va">False</span></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing values</span></span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(person[<span class="st">"name"</span>])  <span class="co"># Output: "Alice"</span></span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding a new key-value pair</span></span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>person[<span class="st">"occupation"</span>] <span class="op">=</span> <span class="st">"Engineer"</span></span>
-<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing a key-value pair</span></span>
-<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> person[<span class="st">"is_student"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a dictionary</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>person <span class="op">=</span> {</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"name"</span>: <span class="st">"Alice"</span>,</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"age"</span>: <span class="dv">30</span>,</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"is_student"</span>: FALSE</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing values</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(person[<span class="st">"name"</span>])  <span class="co"># Output: "Alice"</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding a new key-value pair</span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>person[<span class="st">"occupation"</span>] <span class="op">=</span> <span class="st">"Engineer"</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing a key-value pair</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> person[<span class="st">"is_student"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="importing-packages" class="level3">
 <h3 class="anchored" data-anchor-id="importing-packages">Importing packages</h3>
-<p>Python is used by a very large community, as is said before. One of the reasons for this is that this entire community builds a lot of (open source) packages. It is therefor very useful to be able to build upon these packages. In R you have worked a with <em>dataframes</em> and <em>spatial dataframes</em>. In Python these are not standard datatypes, but they are implemented in very well known packages called <code>Pandas</code> and its spatial counterpart <code>GeoPandas.</code> We will go in much more detail during the Python-Vector tutorial but we will introduce them quickly here.</p>
+<p>Python is used by a very large community, as is said before. One of the reasons for this is that this entire community builds a lot of (open source) packages. It is therefore very useful to be able to build upon these packages. In R you have worked a with <em>dataframes</em> and <em>spatial dataframes</em>. In Python these are not standard datatypes, but they are implemented in very well known packages called <code>Pandas</code> and its spatial counterpart <code>GeoPandas.</code> We will go in much more detail during the Python-Vector tutorial but we will introduce them quickly here.</p>
 <p>In Python we import a package using the <code>import</code> statement (instead of th the <code>library</code> function in R) . For example importing the pandas package goes as follows:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>As you can see we can import a package <em>as</em> something. We use this if we want to point at specific functionality of this package. If we want to point at for example the <code>read_csv</code> function from pandas we we call <code>pd.read_csv</code>. This function is also implemented in other packages, but now we are sure we use the pandas version of this function. Importing pandas is a convention, used very widely in the python community.</p>
 <p>We can create a <code>dataframe</code> as follows:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Name'</span>: [<span class="st">'Alice'</span>, <span class="st">'Bob'</span>, <span class="st">'Charlie'</span>],</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Age'</span>: [<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">22</span>],</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'City'</span>: [<span class="st">'New York'</span>, <span class="st">'San Francisco'</span>, <span class="st">'Chicago'</span>]</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Name'</span>: [<span class="st">'Alice'</span>, <span class="st">'Bob'</span>, <span class="st">'Charlie'</span>],</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Age'</span>: [<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">22</span>],</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'City'</span>: [<span class="st">'New York'</span>, <span class="st">'San Francisco'</span>, <span class="st">'Chicago'</span>]</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can access some information from this <code>dataframe</code> as follows:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the DataFrame</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.head())</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get statistical information about the DataFrame</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.describe())</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Access a specific column</span></span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[<span class="st">'Age'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the DataFrame</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get statistical information about the DataFrame</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.describe())</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Access a specific column</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[<span class="st">'Age'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="geodataframe" class="level3">
 <h3 class="anchored" data-anchor-id="geodataframe">GeoDataFrame</h3>
 <p>The spatial counterpart of a <code>dataframe</code> is a ‘GeoDataFrame’, which we normally import <em>as</em> <code>gpd</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Dummy data for the GeoDataFrame</span></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Name'</span>: [<span class="st">'Location A'</span>, <span class="st">'Location B'</span>, <span class="st">'Location C'</span>],</span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Latitude'</span>: [<span class="fl">40.7128</span>, <span class="fl">34.0522</span>, <span class="fl">41.8781</span>],</span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Longitude'</span>: [<span class="op">-</span><span class="fl">74.0060</span>, <span class="op">-</span><span class="fl">118.2437</span>, <span class="op">-</span><span class="fl">87.6298</span>]</span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the GeoDataFrame with a single line of code</span></span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>gdf <span class="op">=</span> gpd.GeoDataFrame(data, geometry<span class="op">=</span>gpd.points_from_xy(data[<span class="st">'Longitude'</span>], data[<span class="st">'Latitude'</span>]))</span>
-<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the GeoDataFrame</span></span>
-<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gdf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Dummy data for the GeoDataFrame</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Name'</span>: [<span class="st">'Location A'</span>, <span class="st">'Location B'</span>, <span class="st">'Location C'</span>],</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Latitude'</span>: [<span class="fl">40.7128</span>, <span class="fl">34.0522</span>, <span class="fl">41.8781</span>],</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Longitude'</span>: [<span class="op">-</span><span class="fl">74.0060</span>, <span class="op">-</span><span class="fl">118.2437</span>, <span class="op">-</span><span class="fl">87.6298</span>]</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the GeoDataFrame with a single line of code</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>gdf <span class="op">=</span> gpd.GeoDataFrame(data, geometry<span class="op">=</span>gpd.points_from_xy(data[<span class="st">'Longitude'</span>], data[<span class="st">'Latitude'</span>]))</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the GeoDataFrame</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gdf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -848,8 +934,8 @@ dependencies:
 <h1>Python help</h1>
 <p>There are several ways to find help with programming in Python. Searching the internet typically solves your problem the quickest, because it finds answers on multiple platforms, such as StackOverflow and GitHub. During Geoscripting we have the forum to ask and give help. Asking your friends or colleagues in person is also a great way to learn and fix programming problems. Another good option is get documentation from the package website or inside Python:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(sys)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(sys)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>See how the objects and functions in the <code>sys</code> package got listed.</p>
 <div class="cell" type="alert alert-success">
@@ -867,8 +953,14 @@ dependencies:
 <ul>
 <li><a href="https://docs.Python.org/3/contents.html">Official Python tutorial</a></li>
 <li><a href="https://www.python.org/dev/peps/pep-0008/">Python Style guide</a></li>
-<li><a href="https://ugoproto.github.io/ugo_py_doc/py_cs/">Python 3 Cheatsheet</a></li>
 <li><a href="https://www.datacamp.com/community/data-science-cheatsheets?tag=python">Overview Python package Cheatsheets</a></li>
+</ul>
+</section>
+<section id="sources-used" class="level1">
+<h1>Sources used:</h1>
+<ul>
+<li><a href="https://carpentries-incubator.github.io/reproducible-ml-workflows/pixi-intro.html">Carpenters introduction to pixi</a></li>
+<li><a href="https://pixi.prefix.dev/latest/">pixi documentation</a></li>
 </ul>
 
 
@@ -948,7 +1040,7 @@ dependencies:
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/GeoScripting-WUR\.github\.io\/pythonEnvs\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1276,6 +1368,38 @@ dependencies:
   });
   </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

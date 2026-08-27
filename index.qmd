@@ -10,6 +10,7 @@ format:
     toc: true
     toc-location: left
     css: styles.css
+    lightbox: true
 ---
 
 [[WUR Geoscripting](https://geoscripting-wur.github.io/)]{.page-header-title} <img src="https://geoscripting-wur.github.io/figs/WUR_RGB_standard_2025.svg" alt="WUR logo" class="page-header-logo"/>
