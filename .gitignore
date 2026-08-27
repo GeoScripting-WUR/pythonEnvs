@@ -6,3 +6,5 @@
 .vscode/# pixi environments
 .pixi/*
 !.pixi/config.toml
+
+index_files/
