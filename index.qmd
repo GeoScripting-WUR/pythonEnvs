@@ -81,7 +81,6 @@ Creating a project that uses pixi starts with a [manifest](https://pixi.prefix.d
 pixi init example
 ```
 
-## Using pixi
 After running this, a directory should be created with the name of the project that we can change into using `cd`. When listing the files (`ls -a`), 3 files should be present: `.gitattributes`, `.gitignore`, and `pixi.toml`. The contents of `pixi.toml` look like this:
 
 ```{toml}
@@ -164,7 +163,18 @@ If you want to remove a package from the environment, you can do that by simply 
 ## Collaborating with others
 When you are collaborating with others, or want to make your project available to other people on the internet, you need to specify what dependencies your project depend on. We already mentioned that using an environment makes this easy and doable. Adding your `pixi.toml` to your repository makes it possible to others to create a pixi environment from that definition. 
 
-When a toml is available, you can run `pixi init` and pixi will find that toml and create an environment from the dependencies as listed in the file. In the same way, you can create the same environment as the code from your colleague. 
+In some cases, a pixi.toml is already present in the repository. That means Pixi has already been set up. Trying to create a new Pixi project using 'pixi init' will result in an error: 
+
+```{bash, eval=FALSE}
+osboxes@geoscripting:~/exercise-09-starter$ pixi init
+Error:   × pixi.toml already exists
+```
+
+To use pixi in this case, we need to tell pixi to use the existing pixi.toml file to install python and the other project dependencies. We do this using the command 'pixi install'.
+
+```{bash, eval=FALSE}
+$ pixi install
+```
 
 It might happen that you want to use a project that is not using pixi (yet). Since pixi is built upon conda and pip, it supports importing dependencies from those. These dependencies are usually defined in an environment.yml or env.yml (or .yaml) for conda, and requirements.txt for pip. We can import these using `pixi import`. In this course we used to define environments using an env.yml, so you might run into one of those that was supposed to be converted... You can create your pixi environment using: 
 
