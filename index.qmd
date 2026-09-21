@@ -8,7 +8,7 @@ format:
     theme: simplex
     highlight-style: zenburn
     toc: true
-    toc-location: left
+    toc-location: right
     css: styles.css
     lightbox: true
 ---
@@ -20,7 +20,8 @@ format:
 
 ## Introduction
 
-Good afternoon and welcome to the Python part of this course! Today we will introduce how we will work with Python during this course and show some alternative methods. If you are unfamiliar with Python and/or feel that you need more training, follow one of the Datacamp courses as introduction into Python.s
+Good afternoon and welcome to the Python part of this course! Today we will introduce how we will work with Python during this course and show some alternative methods. If you are unfamiliar with Python and/or feel that you need more training, follow one of the Datacamp courses as introduction into Python.
+
 * [Introduction to Python](https://www.datacamp.com/courses/intro-to-python-for-data-science) | recommended to follow if you haven't any scripting experience so far
 * [Python for R users](https://www.datacamp.com/courses/python-for-r-users) | recommended if you have experience already in R
 
