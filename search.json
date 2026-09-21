@@ -11,7 +11,7 @@
     "href": "index.html#introduction",
     "title": "Python Environments",
     "section": "Introduction",
-    "text": "Introduction\nGood afternoon and welcome to the Python part of this course! Today we will introduce how we will work with Python during this course and show some alternative methods. If you are unfamiliar with Python and/or feel that you need more training, follow one of the Datacamp courses as introduction into Python.s * Introduction to Python | recommended to follow if you haven’t any scripting experience so far * Python for R users | recommended if you have experience already in R"
+    "text": "Introduction\nGood afternoon and welcome to the Python part of this course! Today we will introduce how we will work with Python during this course and show some alternative methods. If you are unfamiliar with Python and/or feel that you need more training, follow one of the Datacamp courses as introduction into Python.\n\nIntroduction to Python | recommended to follow if you haven’t any scripting experience so far\nPython for R users | recommended if you have experience already in R"
   },
   {
     "objectID": "index.html#todays-learning-objectives",
